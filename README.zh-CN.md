@@ -2,7 +2,9 @@
 
 极简、纯本地的 macOS 剪贴板历史工具。
 
-![The Clipwharf history strip](docs/screenshot.png)
+[![macOS 13+](https://img.shields.io/badge/macOS-13%2B-blue)](https://www.apple.com/macos/) [![Swift 5.9](https://img.shields.io/badge/Swift-5.9-orange)](https://swift.org) [![Release](https://img.shields.io/github/v/release/JesseWeb/Clipwharf)](https://github.com/JesseWeb/Clipwharf/releases) [![License](https://img.shields.io/badge/license-noncommercial-lightgrey)](LICENSE)
+
+![Clipwharf: press ⌘⇧V, pick a card, it pastes](docs/demo.gif)
 
 [English](README.md) · **[简体中文](README.zh-CN.md)** · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [Français](README.fr.md) · [Español](README.es.md)
 
