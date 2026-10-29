@@ -173,10 +173,10 @@ user to confirm visually.
 
 - **Source only.** `dist/` and `.build/` are gitignored. Never commit a built
   `.app`, `.icns`, `.dmg`, certificate, `.p12`, or provisioning profile.
-- **Respect the license.** Clipwharf is source-available for personal,
-  non-commercial use: no redistribution, no sublicensing, no resale. Never
-  publish a build, attach one to a release, or suggest that someone else
-  redistribute it.
+- **Respect the license.** Clipwharf is source-available under a noncommercial
+  license: sharing is allowed with the license attached, commercial use and
+  resale are not. Never add paid distribution, commercial packaging, or terms
+  that would let someone else monetise the project.
 - **CI is a check, not a publisher.** `.github/workflows/macos-build.yml` runs
   the core tests, builds the bundle, and verifies its layout. Do not add
   artifact uploads or releases of the `.app`: an unsigned download is more

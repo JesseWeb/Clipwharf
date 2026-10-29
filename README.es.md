@@ -104,9 +104,10 @@ swift build -c release --product Clipwharf
 
 ## Licencia
 
-Clipwharf es **código disponible (source-available), no software libre**. Puedes leer el código y
-compilarlo para un uso **personal y no comercial**. Está **prohibido** usarlo con fines comerciales,
-redistribuirlo, sublicenciarlo o vender copias.
+Clipwharf se distribuye bajo una **licencia no comercial de código disponible**. Puedes
+usarlo, modificarlo y compartirlo con fines **no comerciales**; queda **prohibido** usarlo
+comercialmente, venderlo o cobrar por él. El uso comercial requiere una licencia escrita aparte.
 
-Los términos vinculantes están en [LICENSE](LICENSE). Cualquier licencia comercial, redistribución o
-uso más allá del personal requiere permiso previo por escrito del titular de los derechos.
+Los términos vinculantes están en [LICENSE](LICENSE). El uso comercial no autorizado constituye
+un incumplimiento y puede perseguirse con indemnización de daños, restitución de beneficios,
+costas y honorarios.

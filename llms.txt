@@ -10,7 +10,7 @@
 - [docs/ai-install.md](docs/ai-install.md) — copy-paste prompts to install with
   Claude Code / Codex / Cursor
 - [STATUS.md](STATUS.md) — implementation status and scope decisions
-- [LICENSE](LICENSE) — source-available, personal non-commercial use only
+- [LICENSE](LICENSE) — noncommercial source-available: sharing allowed, commercial use prohibited
 
 ## Build in three lines
 

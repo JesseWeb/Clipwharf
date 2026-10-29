@@ -143,10 +143,11 @@ swift scripts/make-icon.swift               # regenerate Support/AppIcon.png
 
 ## License
 
-Clipwharf is **source-available, not open source**. You may read the code and
-build it for your own personal, non-commercial use. You may **not** use it
-commercially, redistribute it, sublicense it, or sell copies of it.
+Clipwharf is **source-available under a noncommercial license**. You may use,
+modify, and share it for **noncommercial purposes**; you may **not** use it
+commercially, sell it, or charge for it. Commercial use requires a separate
+written license.
 
-The binding terms are in [LICENSE](LICENSE). Commercial licensing,
-redistribution, and any other use beyond personal use require prior written
-permission from the copyright holder.
+The binding terms are in [LICENSE](LICENSE). Unauthorised commercial use is a
+breach of this license and may be pursued for damages, disgorgement of profits,
+costs, and attorney's fees.
