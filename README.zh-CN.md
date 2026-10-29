@@ -50,10 +50,17 @@ open dist/Clipwharf.app
 
 构建完把 `dist/Clipwharf.app` 拖进 `/Applications`，以后就从那里启动（权限也记在这个路径上）。
 
-**方式三：暂无下载包。**
+**方式三：下载 DMG。**
 
-Clipwharf 目前不发布二进制：公证需要付费的 Apple 开发者账号，而不公证的包会让每个人第一次打开就撞上
-Gatekeeper 警告。请用方式一或方式二 —— 本地构建还有个好处：app 带的是你自己的代码身份。
+[最新 Release](https://github.com/JesseWeb/Clipwharf/releases/latest) 提供通用版本（Apple 芯片 + Intel，约 2 MB）。
+它是 **ad-hoc 签名、未公证**，所以第一次打开需要右键：
+
+1. 打开 DMG，把 **Clipwharf** 拖进「应用程序」
+2. **右键 Clipwharf → 打开 → 再点「打开」**
+3. 按提示授予辅助功能权限
+
+升级到新的 ad-hoc 版本后代码身份会变，如果辅助功能开关看着是开的、粘贴却仍被拦，用菜单栏里的
+**Fix Accessibility Permission…** 重置一次即可。想要自己的签名、也不想多点这一步？用方式一或方式二。
 
 ## 首次使用
 

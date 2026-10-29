@@ -65,11 +65,19 @@ open dist/Clipwharf.app
 Then drag `dist/Clipwharf.app` into `/Applications` so macOS keeps the app (and
 its permissions) in one place.
 
-**Option 3 — there is no download.** Clipwharf publishes no binaries yet: a
-notarized build needs a paid Apple Developer account, and shipping an unnotarized
-one would greet every user with a Gatekeeper warning. Options 1 and 2 are the
-supported paths, and a local build has the advantage of carrying your own code
-identity.
+**Option 3 — download the DMG.** The
+[latest release](https://github.com/JesseWeb/Clipwharf/releases/latest) ships a
+universal build (Apple silicon + Intel, ~2 MB). It is **ad-hoc signed and not
+notarized**, so the first launch needs a right-click:
+
+1. Open the DMG and drag **Clipwharf** into Applications.
+2. **Right-click Clipwharf → Open → Open.**
+3. Grant Accessibility when asked.
+
+Updating to a newer ad-hoc build changes the code identity, so if the
+Accessibility switch looks on but pasting still prompts, use **Fix Accessibility
+Permission…** in the menu-bar menu. Prefer a build with your own signature and no
+Gatekeeper step? Use option 1 or 2.
 
 ## First run
 

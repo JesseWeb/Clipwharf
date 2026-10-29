@@ -46,10 +46,19 @@ open dist/Clipwharf.app
 
 Luego arrastra `dist/Clipwharf.app` a `/Applications` (los permisos quedan ligados a esa ruta).
 
-**Opción 3 — no hay descarga.** Clipwharf no publica binarios: notarizar exige
-una cuenta de Apple Developer de pago, y una versión sin notarizar recibiría a
-cada usuario con un aviso de Gatekeeper. Las opciones 1 y 2 son las admitidas, y
-una compilación local tiene la ventaja de llevar tu propia identidad de código.
+**Opción 3 — descargar el DMG.** La
+[última release](https://github.com/JesseWeb/Clipwharf/releases/latest) incluye una
+versión universal (Apple silicon + Intel, ~2 MB). Está **firmada ad-hoc, sin
+notarizar**, así que el primer arranque necesita clic derecho.
+
+1. Abre el DMG y arrastra **Clipwharf** a Aplicaciones.
+2. **Clic derecho en Clipwharf → Abrir → Abrir.**
+3. Concede Accesibilidad cuando lo pida.
+
+Actualizar a un build ad-hoc cambia la identidad del código: si el interruptor de
+Accesibilidad parece activo pero pegar sigue bloqueado, usa **Fix Accessibility
+Permission…** en el menú de la barra. Para una firma propia y sin pasos de
+Gatekeeper, usa la opción 1 o 2.
 
 ## Primer uso
 

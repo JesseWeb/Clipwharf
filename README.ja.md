@@ -50,11 +50,18 @@ open dist/Clipwharf.app
 
 `dist/Clipwharf.app` を `/Applications` に移動して使います（権限もこのパスに紐づきます）。
 
-**方法 3：ダウンロード配布はありません。**
+**方法 3：DMG をダウンロード。**
 
-Clipwharf はバイナリを配布していません。公証には有料の Apple Developer アカウントが必要で、未公証の
-ビルドは初回起動時に必ず Gatekeeper の警告が出ます。方法 1 か 2 を使ってください。ローカルビルドなら
-アプリは自分のコード ID を持つという利点もあります。
+[最新リリース](https://github.com/JesseWeb/Clipwharf/releases/latest) にユニバーサルビルド（Apple シリコン + Intel、約 2 MB）があります。
+**ad-hoc 署名・未公証**のため、初回起動は右クリックが必要です。
+
+1. DMG を開き、**Clipwharf** をアプリケーションフォルダへドラッグ
+2. **Clipwharf を右クリック → 開く → 「開く」**
+3. アクセシビリティを求められたら許可
+
+新しい ad-hoc ビルドへ更新するとコード ID が変わるため、スイッチがオンに見えても貼り付けが
+ブロックされる場合は、メニューバーの **Fix Accessibility Permission…** で再設定してください。
+自分の署名で Gatekeeper の手間を省きたい場合は方法 1 か 2 を。
 
 ## 初回起動
 

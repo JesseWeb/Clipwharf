@@ -1,9 +1,10 @@
 # Building and distributing Clipwharf
 
-> **Status: not in use.** Clipwharf currently ships source only. A notarized
-> build needs a paid Apple Developer account, so the pipeline below stays dormant
-> until someone buys one. Keep it as the recipe, not as a promise.
->
+> **Status: tier one only.** Releases currently ship an **ad-hoc signed** DMG.
+> It works, but macOS turns the first launch into a right-click and the
+> Accessibility grant has to be re-done after each update. The notarization steps
+> below are the upgrade path, waiting on a paid Apple Developer account ($99/year).
+
 Two audiences build this project:
 
 - **Yourself**, for your own Mac. `./scripts/make-app.sh release` is enough, and
@@ -14,8 +15,9 @@ Two audiences build this project:
 
 This document covers the second case.
 
-> The repository never contains binaries: `dist/` is gitignored, and the release
-> workflow only attaches a DMG when the signing secrets are configured.
+> The repository never contains binaries: `dist/` is gitignored and the DMG is
+> built by CI on each tag. Without signing secrets the workflow publishes an
+> ad-hoc build; with them it notarizes.
 
 ## What you need
 

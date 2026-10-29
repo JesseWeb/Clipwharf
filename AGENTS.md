@@ -177,10 +177,11 @@ user to confirm visually.
   derivative work under the same licence, and never paste in code from a project
   with an incompatible licence.
 - **CI is a check, not a publisher — except the signing pipeline.**
-  `macos-build.yml` compiles and tests only. `release.yml` may publish a DMG on a
-  `v*` tag, but only when the signing secrets exist, and only after notarization
-  and stapling. Without a Developer ID the project ships no binaries at all;
-  never attach an ad-hoc build to a release.
+  `macos-build.yml` compiles and tests only. `release.yml` publishes a DMG on a
+  `v*` tag: ad-hoc signed when no secrets exist, notarized and stapled when they
+  do. An ad-hoc asset is acceptable **only** with the right-click instructions in
+  the release notes; never hand out a build signed with someone's Apple
+  Development certificate.
 - **Never publish someone's signing identity.** The maintainer's certificate
   must not be required to build. Keep the identity detection dynamic.
 - **Keep the core dependency-free.** `Sources/ClipwharfCore` has no AppKit
