@@ -70,10 +70,17 @@ pick_identity() {
 }
 
 SIGN_ID="${CLIPWHARF_SIGN_IDENTITY:-}"
-if [[ -z "$SIGN_ID" ]]; then
+# CLIPWHARF_SIGN_IDENTITY=adhoc forces an ad-hoc signature even on a Mac that
+# has certificates. Release builds use this so they never carry a personal
+# Apple Development identity to other people's machines.
+if [[ "$SIGN_ID" == "adhoc" || "$SIGN_ID" == "-" ]]; then
+    SIGN_ID=""
+    FORCE_ADHOC=1
+fi
+if [[ -z "$SIGN_ID" && "${FORCE_ADHOC:-0}" != "1" ]]; then
     SIGN_ID="$(pick_identity 'Developer ID Application')"
 fi
-if [[ -z "$SIGN_ID" ]]; then
+if [[ -z "$SIGN_ID" && "${FORCE_ADHOC:-0}" != "1" ]]; then
     SIGN_ID="$(pick_identity 'Apple Development')"
 fi
 
