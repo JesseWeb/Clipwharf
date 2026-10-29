@@ -183,9 +183,10 @@ user to confirm visually.
   import on purpose so its tests run on Linux CI.
 - **Preserve the local-only promise.** No networking, analytics, telemetry, or
   auto-update code. No account or cloud sync.
-- **Keep docs in sync.** User-facing changes belong in `README.md` (six
-  languages: English, 简体中文, 繁體中文, 日本語, Français, Español) and in
-  `STATUS.md`.
+- **Keep docs in sync.** User-facing changes belong in `README.md` and its
+  translations (`README.zh-CN.md`, `README.zh-TW.md`, `README.ja.md`,
+  `README.fr.md`, `README.es.md`), and in `STATUS.md`. English is the source of
+  truth; each translated file carries the language switcher at the top.
 - **Don't clone other clipboard managers.** Clipwharf is a clean-room project:
   no code, assets, icons, sounds, or data formats copied from Paste or similar
   apps. Implement behaviour from first principles.

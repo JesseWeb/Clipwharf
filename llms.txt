@@ -3,8 +3,8 @@
 > Local-only clipboard history for macOS. Menu-bar app, Swift/SwiftPM, no
 > dependencies, no network, no telemetry.
 
-- [README.md](README.md) — features, install, usage, permissions, FAQ
-  (English, 简体中文, 繁體中文, 日本語, Français, Español)
+- [README.md](README.md) — features, install, usage, permissions, FAQ (English)
+  - [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · [日本語](README.ja.md) · [Français](README.fr.md) · [Español](README.es.md)
 - [AGENTS.md](AGENTS.md) — step-by-step instructions for coding agents that
   build/install the app
 - [docs/ai-install.md](docs/ai-install.md) — copy-paste prompts to install with
