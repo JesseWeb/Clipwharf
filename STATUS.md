@@ -157,6 +157,8 @@ Performed in this Linux environment (Swift 6.1.2):
 - No password exclusion by design; apps that put secrets on the general
   pasteboard will be captured. There is also no in-app clear/delete action:
   quit Clipwharf and delete `~/Library/Application Support/Clipwharf` to reset.
+- No binaries are published: notarization needs a paid Apple Developer account,
+  and an unnotarized download would be blocked by Gatekeeper on other Macs.
 - Signed with a local Apple Development certificate when one is available, so the
   Accessibility grant survives rebuilds; otherwise ad-hoc, where every rebuild
   invalidates the grant and **Fix Accessibility Permission…** must be used. No

@@ -46,10 +46,11 @@ open dist/Clipwharf.app
 
 Déplacez ensuite `dist/Clipwharf.app` dans `/Applications` (les autorisations sont liées à ce chemin).
 
-**Option 3 — télécharger une version signée.** Les DMG des Releases sont signés
-avec un Developer ID et notariés : ils s'ouvrent sans avertissement de Gatekeeper.
-Si aucune DMG n'est encore publiée pour votre version, utilisez l'option 2 — une
-compilation locale porte votre propre identité et ne demande aucun compte Apple.
+**Option 3 — aucun téléchargement.** Clipwharf ne publie pas de binaire : la
+notarisation exige un compte Apple Developer payant, et une version non notariée
+accueillerait chaque utilisateur par un avertissement Gatekeeper. Les options 1 et
+2 sont les chemins pris en charge, et une compilation locale a l'avantage de
+porter votre propre identité de code.
 
 ## Premier lancement
 

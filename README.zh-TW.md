@@ -50,10 +50,10 @@ open dist/Clipwharf.app
 
 建置完成後把 `dist/Clipwharf.app` 拖進 `/Applications`，之後都從那裡啟動（權限也綁在這個路徑）。
 
-**方式三：下載已簽章版本。**
+**方式三：目前沒有下載檔。**
 
-Release 中的 DMG 使用 Developer ID 簽章並已公證，可直接開啟、無需繞過 Gatekeeper。若對應版本尚無 DMG，
-請用方式二在本機建置 —— 建置出來的 app 帶的是你自己的身分，也不需要 Apple 開發者帳號。
+Clipwharf 目前不發佈二進位：公證需要付費的 Apple 開發者帳號，而未公證的版本會讓每個人第一次開啟就遇到
+Gatekeeper 警告。請使用方法一或方法二 —— 本機建置的好處是 app 帶的是你自己的程式碼身分。
 
 ## 首次使用
 

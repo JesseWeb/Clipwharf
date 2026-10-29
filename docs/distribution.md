@@ -1,5 +1,9 @@
 # Building and distributing Clipwharf
 
+> **Status: not in use.** Clipwharf currently ships source only. A notarized
+> build needs a paid Apple Developer account, so the pipeline below stays dormant
+> until someone buys one. Keep it as the recipe, not as a promise.
+>
 Two audiences build this project:
 
 - **Yourself**, for your own Mac. `./scripts/make-app.sh release` is enough, and
@@ -10,8 +14,8 @@ Two audiences build this project:
 
 This document covers the second case.
 
-> The repository itself never contains binaries. `dist/` is gitignored, and the
-> CI workflow only publishes a DMG when the signing secrets are configured.
+> The repository never contains binaries: `dist/` is gitignored, and the release
+> workflow only attaches a DMG when the signing secrets are configured.
 
 ## What you need
 

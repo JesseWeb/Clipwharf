@@ -65,10 +65,11 @@ open dist/Clipwharf.app
 Then drag `dist/Clipwharf.app` into `/Applications` so macOS keeps the app (and
 its permissions) in one place.
 
-**Option 3 — download a signed build.** Release DMGs are signed with a Developer
-ID and notarized, so they open without a Gatekeeper warning. If the Releases page
-has no DMG for your version yet, use option 2 — a local build carries your own
-identity and needs no Apple account.
+**Option 3 — there is no download.** Clipwharf publishes no binaries yet: a
+notarized build needs a paid Apple Developer account, and shipping an unnotarized
+one would greet every user with a Gatekeeper warning. Options 1 and 2 are the
+supported paths, and a local build has the advantage of carrying your own code
+identity.
 
 ## First run
 

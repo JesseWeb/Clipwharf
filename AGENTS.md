@@ -179,7 +179,8 @@ user to confirm visually.
 - **CI is a check, not a publisher — except the signing pipeline.**
   `macos-build.yml` compiles and tests only. `release.yml` may publish a DMG on a
   `v*` tag, but only when the signing secrets exist, and only after notarization
-  and stapling. Never attach an ad-hoc or unsigned build to a release.
+  and stapling. Without a Developer ID the project ships no binaries at all;
+  never attach an ad-hoc build to a release.
 - **Never publish someone's signing identity.** The maintainer's certificate
   must not be required to build. Keep the identity detection dynamic.
 - **Keep the core dependency-free.** `Sources/ClipwharfCore` has no AppKit
