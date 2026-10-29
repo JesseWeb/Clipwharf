@@ -1,0 +1,130 @@
+name: Commercial license request
+description: Buy a commercial or OEM licence for Clipwharf
+title: "Commercial license request"
+labels: ["commercial-license"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for doing this the right way. This form starts a commercial licence
+        purchase; the plans and prices are in
+        [COMMERCIAL.md](https://github.com/JesseWeb/Clipwharf/blob/main/COMMERCIAL.md).
+
+        **This issue is public.** Do not include payment details, tax IDs, phone
+        numbers, or personal email addresses. Only the information below is needed
+        to quote you; the maintainer will ask for billing details privately.
+
+  - type: dropdown
+    id: plan
+    attributes:
+      label: Plan
+      description: Pick the closest fit. OEM pricing depends on volume and revenue.
+      options:
+        - Individual commercial ($49 / year, 1 person)
+        - Team ($199 / year, up to 25 people)
+        - Business ($799 / year, up to 250 people)
+        - Enterprise (from $2,499 / year, unlimited seats)
+        - OEM / redistribution (from $4,999 / year or 5% of related revenue)
+        - Not sure — please advise
+    validations:
+      required: true
+
+  - type: input
+    id: entity
+    attributes:
+      label: Legal entity
+      description: Registered company name, or "Individual" for a sole trader.
+      placeholder: Acme Software Ltd.
+    validations:
+      required: true
+
+  - type: input
+    id: country
+    attributes:
+      label: Country or region
+      description: Where the licence will be used and invoiced.
+      placeholder: Japan
+    validations:
+      required: true
+
+  - type: dropdown
+    id: organisation
+    attributes:
+      label: Type of organisation
+      description: Charities, public schools and public research may not need a licence.
+      options:
+        - For-profit company
+        - Non-profit or charity
+        - Public school or university
+        - Public research institute
+        - Individual / sole trader
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: seats
+    attributes:
+      label: Number of people
+      description: How many people will use Clipwharf under this licence?
+      placeholder: "12"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: usage
+    attributes:
+      label: How will it be used?
+      description: Internal use and redistribution are priced differently.
+      multiple: true
+      options:
+        - Internal use on company machines
+        - Bundled inside a product we sell
+        - Preinstalled on hardware we ship
+        - Part of a paid service or hosted offering
+        - Included in paid consulting or training
+        - Other (explain below)
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: What are you building?
+      description: Two or three sentences are enough. If you redistribute, say what ships and roughly how many users.
+      placeholder: We ship a Mac utility and would like to include Clipwharf as the clipboard component. About 4,000 users, sold on our own site.
+    validations:
+      required: true
+
+  - type: input
+    id: timeline
+    attributes:
+      label: When do you need it?
+      description: A date or "no deadline" is fine.
+      placeholder: Before our 1.4 release, mid-January
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: procurement
+    attributes:
+      label: Procurement requirements
+      description: Tick anything that applies so the quote is usable as-is.
+      options:
+        - label: We need an invoice with a PO number
+        - label: We need a signed licence letter or contract
+        - label: We need a security questionnaire or vendor review
+        - label: We need to be set up as a vendor in our procurement system
+        - label: None of the above
+
+  - type: checkboxes
+    id: acknowledgement
+    attributes:
+      label: Acknowledgement
+      options:
+        - label: I understand Clipwharf is free only for noncommercial use, and that commercial use needs this licence.
+          required: true
+        - label: I understand this issue is public and have not included confidential information.
+          required: true
+        - label: I am authorised to request a licence for this organisation.
+          required: true

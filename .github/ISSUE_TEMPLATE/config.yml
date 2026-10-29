@@ -1,0 +1,11 @@
+blank_issues_enabled: true
+contact_links:
+  - name: Commercial licence plans and prices
+    url: https://github.com/JesseWeb/Clipwharf/blob/main/COMMERCIAL.md
+    about: What counts as commercial use, the price list, and what a licence includes.
+  - name: How to contribute
+    url: https://github.com/JesseWeb/Clipwharf/blob/main/CONTRIBUTING.md
+    about: Scope, development setup, and the contributor licence agreement.
+  - name: Install with an AI agent
+    url: https://github.com/JesseWeb/Clipwharf/blob/main/docs/ai-install.md
+    about: Copy-paste prompts for Claude Code, Codex, Cursor and similar tools.

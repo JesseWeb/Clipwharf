@@ -49,12 +49,17 @@ copyright.
 
 ## How to buy
 
-1. Open an issue titled `Commercial license request` in this repository.
-2. Include: legal entity name, country, plan, seat count, and a billing contact.
-3. You get an invoice and a signed licence letter within three business days.
+1. Open the
+   [Commercial license request](https://github.com/JesseWeb/Clipwharf/issues/new?template=commercial-license.yml)
+   issue form. It asks for the legal entity, country, plan, seat count, and how
+   the app will be used — nothing sensitive.
+2. The maintainer replies with a quote and the licence terms.
+3. Pay by invoice; you get a signed licence letter within three business days.
 
-Prefer email? Use the address on the maintainer's GitHub profile and mention
-"Clipwharf commercial license" in the subject.
+The issue is **public**, so the form deliberately does not ask for payment
+details or personal contact information. Those are exchanged privately once the
+quote is accepted. Prefer email? Use the address on the maintainer's GitHub
+profile and mention "Clipwharf commercial license" in the subject.
 
 ## Why the prices are public
 
