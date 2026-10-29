@@ -173,6 +173,10 @@ user to confirm visually.
 
 - **Source only.** `dist/` and `.build/` are gitignored. Never commit a built
   `.app`, `.icns`, `.dmg`, certificate, `.p12`, or provisioning profile.
+- **CI is a check, not a publisher.** `.github/workflows/macos-build.yml` runs
+  the core tests, builds the bundle, and verifies its layout. Do not add
+  artifact uploads or releases of the `.app`: an unsigned download is more
+  confusing than useful, and a signed one would carry someone's identity.
 - **Never publish someone's signing identity.** The maintainer's certificate
   must not be required to build. Keep the identity detection dynamic.
 - **Keep the core dependency-free.** `Sources/ClipwharfCore` has no AppKit

@@ -66,9 +66,9 @@ open dist/Clipwharf.app
 Then drag `dist/Clipwharf.app` into `/Applications` so macOS keeps the app (and
 its permissions) in one place.
 
-**Option 3 — grab the CI build.** Every push compiles the app on GitHub Actions:
-*Actions → macOS build → Artifacts → Clipwharf-macos.zip*. That build is not
-notarized, so the first launch needs right-click → **Open**.
+**Option 3 — nothing to download.** Clipwharf publishes no binaries; GitHub
+Actions only compiles and tests each push. Build it yourself (option 2) so the
+app is signed with your own identity.
 
 ### First run
 
@@ -132,7 +132,7 @@ reset. Nothing is written anywhere else.
 | “Clipwharf needs Accessibility access” although the switch is on | Menu-bar icon → **Fix Accessibility Permission…**, then switch Clipwharf on again |
 | ⌘⇧V does nothing | Another clipboard manager (e.g. Paste) owns the shortcut; quit it or use the menu-bar icon |
 | “Clipwharf.app would like to access data from other apps” | macOS privacy prompt shown the first time QuickLook previews a file owned by another app — allow it once |
-| macOS refuses to open the CI build | Right-click → **Open**, or `xattr -dr com.apple.quarantine /Applications/Clipwharf.app` |
+| The strip closes when I click another app | By design: it hides when it loses focus. Press ⌘⇧V to bring it back |
 | History looks empty after an update | The index is per-user; check `~/Library/Application Support/Clipwharf/history.json` |
 
 ### Development
@@ -194,9 +194,9 @@ open dist/Clipwharf.app
 
 构建完把 `dist/Clipwharf.app` 拖进 `/Applications`，以后就从那里启动（权限也记在这个路径上）。
 
-**方式三：下载 CI 构建产物**
+**方式三：无需下载。**
 
-每次推送都会在 GitHub Actions 上构建：*Actions → macOS build → Artifacts → Clipwharf-macos.zip*。该产物未公证，首次打开需右键 → **打开**。
+Clipwharf 不发布任何二进制，GitHub Actions 只做编译与测试校验。请用方式二在本地构建，这样 app 带的是你自己的代码身份。
 
 ### 首次使用
 
@@ -242,7 +242,7 @@ open dist/Clipwharf.app
 | 辅助功能开关已打开，仍提示需要权限 | 菜单栏图标 → **Fix Accessibility Permission…**，再重新打开开关 |
 | ⌘⇧V 没反应 | 可能被其他剪贴板工具（如 Paste）占用，退出它或用菜单栏图标 |
 | 首次预览文件时提示“想访问其他 App 的数据” | macOS 隐私提示，允许一次即可 |
-| CI 产物打不开 | 右键 → **打开**，或 `xattr -dr com.apple.quarantine /Applications/Clipwharf.app` |
+| 一点其他 App 面板就消失 | 这是设计：面板失焦会自动收起，再按 ⌘⇧V 即可 |
 | 更新后历史为空 | 索引按用户存储，检查 `~/Library/Application Support/Clipwharf/history.json` |
 
 ### 开发
@@ -304,9 +304,9 @@ open dist/Clipwharf.app
 
 建置完成後把 `dist/Clipwharf.app` 拖進 `/Applications`，之後都從那裡啟動（權限也綁在這個路徑）。
 
-**方式三：使用 CI 產物**
+**方式三：無需下載。**
 
-每次推送都會在 GitHub Actions 建置：*Actions → macOS build → Artifacts → Clipwharf-macos.zip*。此產物未經公證，首次開啟需按右鍵 → **打開**。
+Clipwharf 不發佈任何二進位檔，GitHub Actions 只做編譯與測試檢查。請用方式二在本機建置，這樣 app 帶的是你自己的程式碼身分。
 
 ### 首次使用
 
@@ -352,7 +352,7 @@ open dist/Clipwharf.app
 | 輔助使用已開啟仍跳出提示 | 選單列圖示 → **Fix Accessibility Permission…**，再重新開啟 |
 | ⌘⇧V 沒反應 | 可能被其他剪貼簿工具（如 Paste）佔用，先退出它 |
 | 第一次預覽檔案時詢問「取用其他 App 的資料」 | macOS 隱私提示，允許一次即可 |
-| CI 產物無法開啟 | 右鍵 → **打開**，或 `xattr -dr com.apple.quarantine /Applications/Clipwharf.app` |
+| 一點其他 App 面板就消失 | 這是設計：面板失焦會自動收起，再按 ⌘⇧V 即可 |
 
 ### 開發
 
@@ -412,9 +412,9 @@ open dist/Clipwharf.app
 
 `dist/Clipwharf.app` を `/Applications` に移動して使います（権限もこのパスに紐づきます）。
 
-**方法 3：CI のビルド成果物**
+**方法 3：ダウンロードするものはありません。**
 
-push ごとに GitHub Actions でビルドされます：*Actions → macOS build → Artifacts → Clipwharf-macos.zip*。公証されていないため、初回は右クリック → **開く**。
+Clipwharf はバイナリを配布しません。GitHub Actions はコンパイルとテストの確認のみを行います。アプリに自分のコード ID を持たせるため、方法 2 でローカルにビルドしてください。
 
 ### 初回起動
 
@@ -460,7 +460,7 @@ push ごとに GitHub Actions でビルドされます：*Actions → macOS buil
 | アクセシビリティがオンなのに毎回ダイアログが出る | メニューバー → **Fix Accessibility Permission…** の後に再度オンにする |
 | ⌘⇧V が効かない | 他のクリップボードツール（Paste など）が占有している可能性。終了するかメニューバーから開く |
 | 「他のアプリのデータへのアクセス」を求められる | QuickLook プレビュー時の macOS の確認。一度許可すれば以後は出ません |
-| CI のビルドが開けない | 右クリック → **開く**、または `xattr -dr com.apple.quarantine /Applications/Clipwharf.app` |
+| 他のアプリをクリックするとパネルが閉じる | 仕様です（フォーカスを失うと隠れます）。⌘⇧V で再度開けます |
 
 ### 開発
 
@@ -516,7 +516,9 @@ open dist/Clipwharf.app
 
 Déplacez ensuite `dist/Clipwharf.app` dans `/Applications` (les autorisations sont liées à ce chemin).
 
-**Option 3 — artefact CI.** Chaque push compile l'app sur GitHub Actions : *Actions → macOS build → Artifacts → Clipwharf-macos.zip*. L'artefact n'étant pas notarié, le premier lancement demande un clic droit → **Ouvrir**.
+**Option 3 — rien à télécharger.** Clipwharf ne publie aucun binaire ; GitHub
+Actions se contente de compiler et tester à chaque push. Compilez localement
+(option 2) pour que l'app porte votre propre identité de signature.
 
 ### Premier lancement
 
@@ -562,7 +564,7 @@ Tout est en JSON et en fichiers simples. Quittez Clipwharf et supprimez ce dossi
 | L'interrupteur Accessibilité est activé mais la demande revient | Barre des menus → **Fix Accessibility Permission…**, puis réactivez |
 | ⌘⇧V ne fait rien | Un autre gestionnaire (Paste, etc.) occupe le raccourci : quittez-le ou passez par l'icône |
 | « Clipwharf.app souhaite accéder aux données d'autres apps » | Invite macOS lors du premier aperçu QuickLook d'un fichier appartenant à une autre app : autorisez une fois |
-| Le build CI refuse de s'ouvrir | Clic droit → **Ouvrir**, ou `xattr -dr com.apple.quarantine /Applications/Clipwharf.app` |
+| Le panneau se ferme dès que je clique ailleurs | C'est voulu : il se masque en perdant le focus. Rouvrez-le avec ⌘⇧V |
 
 ### Développement
 
@@ -618,7 +620,9 @@ open dist/Clipwharf.app
 
 Luego arrastra `dist/Clipwharf.app` a `/Applications` (los permisos quedan ligados a esa ruta).
 
-**Opción 3 — artefacto de CI.** Cada push compila en GitHub Actions: *Actions → macOS build → Artifacts → Clipwharf-macos.zip*. No está notarizado, así que la primera vez hay que hacer clic derecho → **Abrir**.
+**Opción 3 — no hay nada que descargar.** Clipwharf no publica binarios;
+GitHub Actions solo compila y prueba en cada push. Compila en local (opción 2)
+para que la app lleve tu propia identidad de firma.
 
 ### Primer uso
 
@@ -664,7 +668,7 @@ Todo es JSON y archivos normales. Sal de Clipwharf y borra esa carpeta para rein
 | El interruptor de Accesibilidad está activo pero sigue pidiendo permiso | Barra de menús → **Fix Accessibility Permission…** y actívalo de nuevo |
 | ⌘⇧V no hace nada | Otro gestor (Paste, etc.) ocupa el atajo: ciérralo o usa el icono |
 | «Clipwharf.app desea acceder a datos de otras apps» | Aviso de macOS al previsualizar con QuickLook un archivo de otra app: permite una vez |
-| La compilación de CI no se abre | Clic derecho → **Abrir**, o `xattr -dr com.apple.quarantine /Applications/Clipwharf.app` |
+| El panel se cierra al hacer clic en otra app | Es intencionado: se oculta al perder el foco. Vuelve a abrirlo con ⌘⇧V |
 
 ### Desarrollo
 
