@@ -50,9 +50,10 @@ open dist/Clipwharf.app
 
 构建完把 `dist/Clipwharf.app` 拖进 `/Applications`，以后就从那里启动（权限也记在这个路径上）。
 
-**方式三：无需下载。**
+**方式三：下载已签名版本。**
 
-Clipwharf 不发布任何二进制，GitHub Actions 只做编译与测试校验。请用方式二在本地构建，这样 app 带的是你自己的代码身份。
+Release 里的 DMG 使用 Developer ID 签名并已公证，可以直接打开、无需绕过 Gatekeeper。如果对应版本还没有 DMG，
+请用方式二在本地构建 —— 构建出来的 app 带的是你自己的身份，也不需要 Apple 开发者账号。
 
 ## 首次使用
 
@@ -112,10 +113,8 @@ swift scripts/make-icon.swift               # 重新生成 Support/AppIcon.png
 
 ## 许可
 
-Clipwharf 采用**非商业源码许可（source-available, noncommercial）**。你可以基于**非商业目的**
-使用、修改和分发它；但**不得**将其用于商业用途、贩售或收费。商业使用需另行取得书面授权。
+Clipwharf 以 **GNU Affero 通用公共许可证 v3.0（AGPL-3.0）** 发布：你可以自由使用、修改和
+分发，包括商业用途，但派生产品与网络服务必须继续以同一许可公开源码。
 
-具有法律效力的条款见 [LICENSE](LICENSE)。未经授权的商业使用构成违约，权利人可主张损害赔偿、
-返还所得利润、诉讼费用及律师费。
-
-商业授权与价格见 [COMMERCIAL.md](COMMERCIAL.md)；参与贡献见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+无法接受 copyleft 义务的闭源产品可以购买**商业授权**，从而免除开源要求。价格与条款见
+[COMMERCIAL.md](COMMERCIAL.md)，贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。

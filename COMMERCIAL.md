@@ -1,48 +1,59 @@
 # Commercial licensing
 
-Clipwharf is free for **noncommercial** use under the [LICENSE](LICENSE).
-Companies and anyone earning money with it need a commercial license. This page
-is the price list, so there is no ambiguity about what a licence is worth.
+Clipwharf is free software under the [GNU Affero General Public License
+v3.0](LICENSE). That licence already allows commercial use — as long as you
+accept its obligations: if you modify Clipwharf and distribute it, or offer it
+to others over a network, you must publish the corresponding source under the
+AGPL.
 
-> 中文摘要：商业使用（公司内部使用、收费服务、随产品分发、转售）需要购买商业许可。
-> 个人使用、慈善机构、教育与非商业研究免费。价格公开列在下面，便于双方按同一标准谈判。
+Many products cannot do that. For those, a **commercial licence** removes the
+copyleft obligations and lets you ship Clipwharf inside closed-source software.
+
+> 中文摘要：Clipwharf 采用 AGPL-3.0。公司可以免费商用，但一旦修改后分发或提供网络服务，
+> 就必须按 AGPL 公开源码。不想开源的产品需要购买商业授权（价格见下表）。
+> 个人使用、非商业分享、以及按 AGPL 开源的项目，永远免费。
 
 ## Do I need a commercial license?
 
-| Situation | License needed |
+| Situation | What you need |
 |---|---|
-| Personal use on your own Macs | Free (noncommercial license) |
-| A charity, public school, or public research project | Free (noncommercial license) |
-| Evaluating Clipwharf for up to 30 days inside a company | Free, then buy or stop |
-| Using it at work, on a work Mac, for work output | **Commercial** |
-| Shipping it inside a product, installer, or appliance | **OEM / redistribution** |
-| Selling it, bundling it with paid software, or hosting it as a service | **OEM / redistribution** |
-| Paid consulting, support contracts, or training that includes Clipwharf | **Commercial** |
+| Personal use, hobby projects, study | Nothing — AGPL, free |
+| Charity, public school, public research | Nothing — AGPL, free |
+| Using the unmodified app at work on your own machines | Nothing — AGPL permits internal use |
+| Forking it and publishing your fork under the AGPL | Nothing — AGPL, keep the notices |
+| Shipping it inside a **closed-source** product or installer | **Commercial** |
+| Modifying it and distributing without publishing your source | **Commercial** |
+| Offering it, or a modified version, as a network service without publishing source | **Commercial** |
+| Bundling it with paid software, an appliance, or a paid service | **Commercial** |
+| Needing a warranty, indemnity, or a signed contract for procurement | **Commercial** |
 
-If you are unsure, open an issue and ask before you ship.
+If your legal team simply refuses AGPL-licensed code in the dependency tree,
+that is the commercial licence too — and it is a perfectly normal reason.
 
 ## Price list
 
-Prices are in US dollars, per organisation, excluding tax. Each licence
-includes **12 months of updates** from the purchase date; the licence itself
-does not expire for the version you received.
+Prices are in US dollars, per organisation, excluding tax. Each licence includes
+**12 months of updates** and applies to the version you received indefinitely.
 
 | Plan | Price | Seats | Includes |
 |---|---|---|---|
-| **Individual commercial** | **$49 / year** | 1 person | Work use on machines you control, email support |
-| **Team** | **$199 / year** | up to 25 people | Internal deployment, priority email support |
-| **Business** | **$799 / year** | up to 250 people | Internal deployment, security questionnaire answers, invoice/PO |
-| **Enterprise** | **from $2,499 / year** | unlimited | Internal deployment, named contact, procurement paperwork |
-| **OEM / redistribution** | **from $4,999 / year or 5 % of related revenue**, whichever is greater | — | Ship Clipwharf inside your product, appliance, installer, or paid service |
+| **Individual commercial** | **$49 / year** | 1 person | Closed-source use by one developer |
+| **Team** | **$199 / year** | up to 25 people | Closed-source internal or product use |
+| **Business** | **$799 / year** | up to 250 people | Closed-source use, security questionnaire answers, invoice/PO |
+| **Enterprise** | **from $2,499 / year** | unlimited | Closed-source use, named contact, procurement paperwork |
+| **OEM / redistribution** | **from $4,999 / year or 5 % of related revenue**, whichever is greater | — | Ship Clipwharf inside your product, appliance, installer or paid service |
 
 Multi-year terms: 15 % off for two years, 25 % off for three, paid up front.
+Startups under $100k annual revenue: ask for the startup rate.
 
 ## What a commercial license adds
 
-- The commercial-use rights that Section 3 of the [LICENSE](LICENSE) withholds.
-- Permission to redistribute, where the plan includes it.
-- Written confirmation you can show to procurement or legal.
-- An invoice you can book.
+- **No copyleft.** You may modify, link, and distribute Clipwharf without
+  publishing your source.
+- **Written permission** you can show to legal, procurement, or a customer's
+  security review.
+- An invoice you can book, and a licence letter you can file.
+- Optional warranty and indemnity terms on the Business and Enterprise plans.
 
 It does **not** buy influence over the roadmap, and it does not transfer
 copyright.
@@ -58,35 +69,33 @@ copyright.
 
 The issue is **public**, so the form deliberately does not ask for payment
 details or personal contact information. Those are exchanged privately once the
-quote is accepted. Prefer email? Use the address on the maintainer's GitHub
-profile and mention "Clipwharf commercial license" in the subject.
+quote is accepted.
 
 ## Why the prices are public
 
-Section 4 of the [LICENSE](LICENSE) records that published licensing terms are
-evidence of the value of the rights taken. Publishing a real price is what makes
-that clause useful: unauthorised commercial use is measured against this list,
-not against a guess.
+A published price is the anchor for a commercial conversation, and it is the
+number a court can compare against if someone ships Clipwharf in a closed-source
+product without a licence. It also keeps the deal simple: no haggling, no
+"what's it worth to you".
 
 ## FAQ
 
-**Can I publish a fork?**
-Yes, for noncommercial purposes, with the license and copyright notices kept
-intact. You may not charge for it or use it to make money.
+**Is Clipwharf open source now?**
+Yes. AGPL-3.0 is an OSI-approved licence, which is why Clipwharf can appear in
+package managers and open-source lists. The trade is copyleft: improvements stay
+open.
 
-**Can I use Clipwharf internally at my company if we never sell it?**
-That is commercial use and needs at least the Team plan.
+**Can I sell a product that uses Clipwharf?**
+Only if you comply with the AGPL (publish your corresponding source) or buy a
+commercial licence.
 
-**Can I bundle it in a paid Mac app?**
-Only with the OEM plan.
+**Can I keep my fork private?**
+Yes, as long as you do not distribute it or expose it to users over a network.
+That is ordinary AGPL behaviour.
 
-**We are a startup with no revenue yet.**
-Write to us. There is a startup rate for companies under $100k annual revenue.
+**Do contributors get a free commercial licence?**
+Yes — anyone with a merged pull request gets the Individual plan for their own
+work use.
 
-**What happens if we keep using it without a license?**
-See Section 4 of the [LICENSE](LICENSE): the copyright holder may seek an
-injunction, damages, disgorgement of profits, costs, and attorney's fees.
-
-**Do contributors get a free commercial license?**
-Yes. Anyone with a merged pull request gets the Individual plan for their own
-work use, at no charge.
+**What if we already shipped without a licence?**
+Talk to us. Coming forward early is treated very differently from being found.

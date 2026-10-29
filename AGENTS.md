@@ -173,14 +173,13 @@ user to confirm visually.
 
 - **Source only.** `dist/` and `.build/` are gitignored. Never commit a built
   `.app`, `.icns`, `.dmg`, certificate, `.p12`, or provisioning profile.
-- **Respect the license.** Clipwharf is source-available under a noncommercial
-  license: sharing is allowed with the license attached, commercial use and
-  resale are not. Never add paid distribution, commercial packaging, or terms
-  that would let someone else monetise the project.
-- **CI is a check, not a publisher.** `.github/workflows/macos-build.yml` runs
-  the core tests, builds the bundle, and verifies its layout. Do not add
-  artifact uploads or releases of the `.app`: an unsigned download is more
-  confusing than useful, and a signed one would carry someone's identity.
+- **Respect the license.** Clipwharf is AGPL-3.0: keep the notices, keep
+  derivative work under the same licence, and never paste in code from a project
+  with an incompatible licence.
+- **CI is a check, not a publisher — except the signing pipeline.**
+  `macos-build.yml` compiles and tests only. `release.yml` may publish a DMG on a
+  `v*` tag, but only when the signing secrets exist, and only after notarization
+  and stapling. Never attach an ad-hoc or unsigned build to a release.
 - **Never publish someone's signing identity.** The maintainer's certificate
   must not be required to build. Keep the identity detection dynamic.
 - **Keep the core dependency-free.** `Sources/ClipwharfCore` has no AppKit
@@ -191,9 +190,9 @@ user to confirm visually.
   description contains the agreement line from `CONTRIBUTING.md`. Never merge
   outside code that has not accepted it, and never paste in code from a project
   with an incompatible licence.
-- **Commercial use is not free.** Read `COMMERCIAL.md` before adding anything
-  that packages, resells, or monetises the app; the licence forbids it without a
-  purchased plan.
+- **Dual licensing needs the CLA.** Commercial licences in `COMMERCIAL.md` are
+  only possible because the CLA grants relicensing rights; never merge a pull
+  request that has not accepted it.
 - **Keep docs in sync.** User-facing changes belong in `README.md` and its
   translations (`README.zh-CN.md`, `README.zh-TW.md`, `README.ja.md`,
   `README.fr.md`, `README.es.md`), and in `STATUS.md`. English is the source of
@@ -220,7 +219,10 @@ Sources/Clipwharf/                menu-bar app
 Support/Info.plist                bundle metadata (LSUIElement)
 Support/AppIcon.png               icon master
 scripts/make-app.sh               build + assemble + sign
+scripts/make-dmg.sh               build a drag-to-Applications .dmg
+scripts/notarize.sh               notarytool submit + staple the .dmg
 scripts/make-icon.swift           redraws Support/AppIcon.png
+scripts/make-social-card.swift    redraws docs/social-preview.png
 Tests/ClipwharfCoreTests/         31 unit tests
 ```
 

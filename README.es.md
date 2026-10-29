@@ -46,9 +46,10 @@ open dist/Clipwharf.app
 
 Luego arrastra `dist/Clipwharf.app` a `/Applications` (los permisos quedan ligados a esa ruta).
 
-**Opción 3 — no hay nada que descargar.** Clipwharf no publica binarios;
-GitHub Actions solo compila y prueba en cada push. Compila en local (opción 2)
-para que la app lleve tu propia identidad de firma.
+**Opción 3 — descargar una versión firmada.** Los DMG de Releases están firmados
+con Developer ID y notarizados, así que se abren sin avisos de Gatekeeper. Si
+todavía no hay DMG para tu versión, usa la opción 2: una compilación local lleva
+tu propia identidad y no necesita cuenta de Apple.
 
 ## Primer uso
 
@@ -106,12 +107,10 @@ swift build -c release --product Clipwharf
 
 ## Licencia
 
-Clipwharf se distribuye bajo una **licencia no comercial de código disponible**. Puedes
-usarlo, modificarlo y compartirlo con fines **no comerciales**; queda **prohibido** usarlo
-comercialmente, venderlo o cobrar por él. El uso comercial requiere una licencia escrita aparte.
+Clipwharf es software libre bajo la **GNU Affero General Public License v3.0**:
+puedes usarlo, modificarlo y compartirlo, incluso comercialmente, siempre que
+las obras derivadas y los servicios en red sigan abiertos con la misma licencia.
 
-Los términos vinculantes están en [LICENSE](LICENSE). El uso comercial no autorizado constituye
-un incumplimiento y puede perseguirse con indemnización de daños, restitución de beneficios,
-costas y honorarios.
-
-Licencias comerciales y precios: [COMMERCIAL.md](COMMERCIAL.md). Contribuir: [CONTRIBUTING.md](CONTRIBUTING.md).
+Los productos que no pueden asumir ese copyleft pueden comprar una **licencia
+comercial**, que elimina esas obligaciones. Precios y condiciones:
+[COMMERCIAL.md](COMMERCIAL.md); contribuciones: [CONTRIBUTING.md](CONTRIBUTING.md).

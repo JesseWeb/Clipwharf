@@ -65,9 +65,10 @@ open dist/Clipwharf.app
 Then drag `dist/Clipwharf.app` into `/Applications` so macOS keeps the app (and
 its permissions) in one place.
 
-**Option 3 — nothing to download.** Clipwharf publishes no binaries; GitHub
-Actions only compiles and tests each push. Build it yourself (option 2) so the
-app is signed with your own identity.
+**Option 3 — download a signed build.** Release DMGs are signed with a Developer
+ID and notarized, so they open without a Gatekeeper warning. If the Releases page
+has no DMG for your version yet, use option 2 — a local build carries your own
+identity and needs no Apple account.
 
 ## First run
 
@@ -145,13 +146,11 @@ swift scripts/make-icon.swift               # regenerate Support/AppIcon.png
 
 ## License
 
-Clipwharf is **source-available under a noncommercial license**. You may use,
-modify, and share it for **noncommercial purposes**; you may **not** use it
-commercially, sell it, or charge for it. Commercial use requires a separate
-written license.
+Clipwharf is free software under the **GNU Affero General Public License
+v3.0**. You may use it, modify it, and share it — including commercially — as
+long as derivative works and network services stay open under the same licence.
 
-The binding terms are in [LICENSE](LICENSE). Unauthorised commercial use is a
-breach of this license and may be pursued for damages, disgorgement of profits,
-costs, and attorney's fees.
-
-Commercial licences and prices: [COMMERCIAL.md](COMMERCIAL.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md).
+Products that cannot accept copyleft can buy a **commercial licence**, which
+removes those obligations. Prices and terms are in
+[COMMERCIAL.md](COMMERCIAL.md); contributions are covered by
+[CONTRIBUTING.md](CONTRIBUTING.md).

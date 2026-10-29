@@ -1,7 +1,7 @@
 // swift-tools-version: 5.9
 //
 // Clipwharf — a tiny, local-only clipboard history for macOS.
-// Noncommercial source-available license. See LICENSE.
+// GNU AGPL-3.0. Commercial licences: see COMMERCIAL.md.
 //
 // The executable target imports AppKit/SwiftUI, so it is only declared on
 // macOS. Omitting it elsewhere lets the AppKit-free core tests run on Linux.

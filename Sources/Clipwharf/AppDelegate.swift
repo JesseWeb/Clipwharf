@@ -209,6 +209,8 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         Version \(ClipwharfBuildInfo.version) · \(ClipwharfBuildInfo.license)
         Free and local. No accounts, no cloud, no tracking.
+
+        Source: \(ClipwharfBuildInfo.sourceURL)
         """
         alert.addButton(withTitle: "Done")
         alert.runModal()

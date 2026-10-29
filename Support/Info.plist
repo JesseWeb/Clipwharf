@@ -27,6 +27,6 @@
     <key>NSPrincipalClass</key>
     <string>NSApplication</string>
     <key>NSHumanReadableCopyright</key>
-    <string>Noncommercial source-available. Copyright (c) 2026 JesseWeb and Clipwharf contributors.</string>
+    <string>GNU AGPL-3.0. Copyright (c) 2026 JesseWeb and Clipwharf contributors.</string>
 </dict>
 </plist>

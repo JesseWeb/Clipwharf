@@ -50,9 +50,10 @@ open dist/Clipwharf.app
 
 `dist/Clipwharf.app` を `/Applications` に移動して使います（権限もこのパスに紐づきます）。
 
-**方法 3：ダウンロードするものはありません。**
+**方法 3：署名済みビルドをダウンロード。**
 
-Clipwharf はバイナリを配布しません。GitHub Actions はコンパイルとテストの確認のみを行います。アプリに自分のコード ID を持たせるため、方法 2 でローカルにビルドしてください。
+Releases の DMG は Developer ID で署名・公証済みのため、Gatekeeper の警告なしで開けます。該当バージョンの
+DMG がまだ無い場合は方法 2 でローカルにビルドしてください（自分のコード ID になり、Apple アカウントも不要です）。
 
 ## 初回起動
 
@@ -110,11 +111,9 @@ swift build -c release --product Clipwharf
 
 ## ライセンス
 
-Clipwharf は**非商用のソース公開ライセンス**で提供されています。**非商業目的**であれば
-使用・改変・再配布ができますが、**商業利用・販売・課金は禁止**です。商業利用には別途
-書面による許諾が必要です。
+Clipwharf は **GNU Affero General Public License v3.0（AGPL-3.0）** で提供されます。
+商用を含め自由に使用・改変・再配布できますが、派生物やネットワークサービスは同じ
+ライセンスでソースを公開する必要があります。
 
-法的に有効な条件は [LICENSE](LICENSE) にあります。無断の商業利用はライセンス違反であり、
-損害賠償、利益の返還、訴訟費用および弁護士費用の請求対象となります。
-
-商業ライセンスと価格は [COMMERCIAL.md](COMMERCIAL.md)、貢献については [CONTRIBUTING.md](CONTRIBUTING.md) を参照。
+コピーレフトを受け入れられない製品向けに**商用ライセンス**を用意しています。価格と条件は
+[COMMERCIAL.md](COMMERCIAL.md)、貢献については [CONTRIBUTING.md](CONTRIBUTING.md) を参照。

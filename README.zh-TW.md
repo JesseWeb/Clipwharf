@@ -50,9 +50,10 @@ open dist/Clipwharf.app
 
 建置完成後把 `dist/Clipwharf.app` 拖進 `/Applications`，之後都從那裡啟動（權限也綁在這個路徑）。
 
-**方式三：無需下載。**
+**方式三：下載已簽章版本。**
 
-Clipwharf 不發佈任何二進位檔，GitHub Actions 只做編譯與測試檢查。請用方式二在本機建置，這樣 app 帶的是你自己的程式碼身分。
+Release 中的 DMG 使用 Developer ID 簽章並已公證，可直接開啟、無需繞過 Gatekeeper。若對應版本尚無 DMG，
+請用方式二在本機建置 —— 建置出來的 app 帶的是你自己的身分，也不需要 Apple 開發者帳號。
 
 ## 首次使用
 
@@ -110,10 +111,8 @@ swift build -c release --product Clipwharf
 
 ## 授權
 
-Clipwharf 採用**非商業原始碼授權（source-available, noncommercial）**。你可以基於**非商業目的**
-使用、修改與散布它；但**不得**將其用於商業用途、販售或收費。商業使用需另行取得書面授權。
+Clipwharf 以 **GNU Affero 通用公共授權 v3.0（AGPL-3.0）** 發佈：你可以自由使用、修改與
+散布，包括商業用途，但衍生產物與網路服務必須繼續以同一授權公開原始碼。
 
-具法律效力的條款見 [LICENSE](LICENSE)。未經授權的商業使用構成違約，權利人可主張損害賠償、
-返還所得利潤、訴訟費用及律師費。
-
-商業授權與價格見 [COMMERCIAL.md](COMMERCIAL.md)；參與貢獻見 [CONTRIBUTING.md](CONTRIBUTING.md)。
+無法接受 copyleft 義務的閉源產品可以購買**商業授權**，從而免除開源要求。價格與條款見
+[COMMERCIAL.md](COMMERCIAL.md)，貢獻方式見 [CONTRIBUTING.md](CONTRIBUTING.md)。
