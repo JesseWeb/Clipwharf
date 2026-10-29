@@ -1,0 +1,25 @@
+# Clipwharf
+
+> Local-only clipboard history for macOS. Menu-bar app, Swift/SwiftPM, no
+> dependencies, no network, no telemetry.
+
+- [README.md](README.md) — features, install, usage, permissions, FAQ
+  (English, 简体中文, 繁體中文, 日本語, Français, Español)
+- [AGENTS.md](AGENTS.md) — step-by-step instructions for coding agents that
+  build/install the app
+- [docs/ai-install.md](docs/ai-install.md) — copy-paste prompts to install with
+  Claude Code / Codex / Cursor
+- [STATUS.md](STATUS.md) — implementation status and scope decisions
+- [LICENSE](LICENSE) — MIT
+
+## Build in three lines
+
+```sh
+git clone https://github.com/JesseWeb/Clipwharf.git && cd Clipwharf
+./scripts/make-app.sh release
+open dist/Clipwharf.app
+```
+
+Requirements: macOS 13+, Xcode 15+ (Swift 5.9+). The app is a menu-bar agent
+(`LSUIElement`): no Dock icon, no main window. Press ⌘⇧V to open the history
+strip. Auto-paste needs the Accessibility permission.
