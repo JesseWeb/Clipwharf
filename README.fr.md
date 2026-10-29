@@ -115,3 +115,5 @@ licence.
 Les produits qui ne peuvent pas accepter ce copyleft peuvent acheter une
 **licence commerciale**, qui supprime ces obligations. Tarifs et conditions :
 [COMMERCIAL.md](COMMERCIAL.md) ; contributions : [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Copyright et mentions : [NOTICE](NOTICE).

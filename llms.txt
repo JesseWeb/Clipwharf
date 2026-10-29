@@ -13,7 +13,7 @@
   universal DMG and the release secrets
 - [docs/launch/](docs/launch/) — ready-to-post launch copy
 - [STATUS.md](STATUS.md) — implementation status and scope decisions
-- [LICENSE](LICENSE) — GNU AGPL-3.0
+- [LICENSE](LICENSE) — GNU AGPL-3.0 (copyright notices in NOTICE)
 - [COMMERCIAL.md](COMMERCIAL.md) — commercial licence (AGPL exception), price list, OEM terms
 - [CONTRIBUTING.md](CONTRIBUTING.md) — scope, workflow, and the contributor licence agreement
 

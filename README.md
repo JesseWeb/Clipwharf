@@ -154,3 +154,5 @@ Products that cannot accept copyleft can buy a **commercial licence**, which
 removes those obligations. Prices and terms are in
 [COMMERCIAL.md](COMMERCIAL.md); contributions are covered by
 [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Copyright and notices: [NOTICE](NOTICE).

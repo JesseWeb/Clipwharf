@@ -114,3 +114,5 @@ las obras derivadas y los servicios en red sigan abiertos con la misma licencia.
 Los productos que no pueden asumir ese copyleft pueden comprar una **licencia
 comercial**, que elimina esas obligaciones. Precios y condiciones:
 [COMMERCIAL.md](COMMERCIAL.md); contribuciones: [CONTRIBUTING.md](CONTRIBUTING.md).
+
+Copyright y avisos: [NOTICE](NOTICE).

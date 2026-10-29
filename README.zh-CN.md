@@ -118,3 +118,5 @@ Clipwharf 以 **GNU Affero 通用公共许可证 v3.0（AGPL-3.0）** 发布：�
 
 无法接受 copyleft 义务的闭源产品可以购买**商业授权**，从而免除开源要求。价格与条款见
 [COMMERCIAL.md](COMMERCIAL.md)，贡献方式见 [CONTRIBUTING.md](CONTRIBUTING.md)。
+
+版权与声明见 [NOTICE](NOTICE)。

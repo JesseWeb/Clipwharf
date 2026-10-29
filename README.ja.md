@@ -117,3 +117,5 @@ Clipwharf は **GNU Affero General Public License v3.0（AGPL-3.0）** で提供
 
 コピーレフトを受け入れられない製品向けに**商用ライセンス**を用意しています。価格と条件は
 [COMMERCIAL.md](COMMERCIAL.md)、貢献については [CONTRIBUTING.md](CONTRIBUTING.md) を参照。
+
+著作権および通知は [NOTICE](NOTICE) を参照。
