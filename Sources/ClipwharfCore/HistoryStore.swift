@@ -95,13 +95,44 @@ public final class HistoryStore {
             createdAt: Date(),
             contentHash: clip.contentHash,
             imageWidth: clip.imageWidth,
-            imageHeight: clip.imageHeight
+            imageHeight: clip.imageHeight,
+            sourceBundleID: clip.sourceBundleID,
+            sourceAppName: clip.sourceAppName,
+            colorHex: clip.colorHex
         )
 
         items.insert(item, at: 0)
         pruneIfNeeded()
         persist()
         return item
+    }
+
+    // MARK: - Pinboards
+
+    /// Pinned entries, newest pin first.
+    public var pinnedItems: [ClipItem] {
+        items
+            .filter(\.isPinned)
+            .sorted {
+                ($0.pinnedAt ?? $0.createdAt) > ($1.pinnedAt ?? $1.createdAt)
+            }
+    }
+
+    /// Pin or unpin an entry. Pinned entries are exempt from pruning.
+    @discardableResult
+    public func setPinned(_ pinned: Bool, for id: UUID) -> ClipItem? {
+        guard let index = items.firstIndex(where: { $0.id == id }) else { return nil }
+        guard items[index].isPinned != pinned else { return items[index] }
+
+        items[index].isPinned = pinned
+        items[index].pinnedAt = pinned ? Date() : nil
+        let updated = items[index]
+        persist()
+        return updated
+    }
+
+    public func isPinned(_ id: UUID) -> Bool {
+        items.first { $0.id == id }?.isPinned ?? false
     }
 
     // MARK: - Blob access
@@ -161,7 +192,7 @@ public final class HistoryStore {
 
             let isUsable: Bool
             switch item.kind {
-            case .text:
+            case .text, .link, .color:
                 isUsable = !(item.text ?? "").trimmingCharacters(in: .whitespacesAndNewlines).isEmpty
             case .image:
                 if let name = item.imageFileName, blobURL(named: name) != nil {
@@ -201,13 +232,29 @@ public final class HistoryStore {
 
     // MARK: - Pruning
 
-    /// Keep the newest `maxItems` entries and remove older blobs.
-    /// Returns true when anything was removed.
+    /// Keep the newest `maxItems` unpinned entries and remove older blobs.
+    /// Pinned entries are never pruned. Returns true when anything was removed.
     @discardableResult
     private func pruneIfNeeded() -> Bool {
         guard items.count > maxItems else { return false }
-        let removed = Array(items[maxItems...])
-        items = Array(items.prefix(maxItems))
+
+        var kept: [ClipItem] = []
+        var removed: [ClipItem] = []
+        var unpinnedKept = 0
+
+        for item in items {
+            if item.isPinned {
+                kept.append(item)
+            } else if unpinnedKept < maxItems {
+                kept.append(item)
+                unpinnedKept += 1
+            } else {
+                removed.append(item)
+            }
+        }
+
+        guard !removed.isEmpty else { return false }
+        items = kept
         deleteBlobs(for: removed)
         return true
     }

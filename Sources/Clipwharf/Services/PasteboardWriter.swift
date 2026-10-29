@@ -22,7 +22,7 @@ enum PasteboardWriter {
         pasteboard.clearContents()
 
         switch item.kind {
-        case .text:
+        case .text, .link, .color:
             guard let text = item.text, !text.isEmpty else { throw WriteError.missingContent }
             pasteboard.setString(text, forType: .string)
 

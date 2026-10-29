@@ -8,21 +8,28 @@ private final class HistoryPanel: NSPanel {
     override var canBecomeMain: Bool { false }
 }
 
-/// Hosts the SwiftUI history list in a floating panel.
+/// Hosts the SwiftUI history strip in a floating panel pinned to the bottom of
+/// the screen, the way Paste lays out its clipboard history.
 final class PanelController: NSObject, NSWindowDelegate {
     var onPaste: ((ClipItem) -> Void)?
     var onClose: (() -> Void)?
 
     private let store: HistoryStore
-    private let model = PanelModel()
+    private let model: PanelModel
     private var panel: HistoryPanel?
     private var keyMonitor: Any?
 
     init(store: HistoryStore) {
         self.store = store
+        self.model = PanelModel(store: store)
         super.init()
         model.onActivate = { [weak self] item in
             self?.onPaste?(item)
+        }
+        model.onPinChange = { [weak self] item, pinned in
+            guard let self else { return }
+            _ = self.store.setPinned(pinned, for: item.id)
+            self.model.applyStoreItems(self.store.items)
         }
     }
 
@@ -51,8 +58,8 @@ final class PanelController: NSObject, NSWindowDelegate {
 
     private func makePanel() -> HistoryPanel {
         let panel = HistoryPanel(
-            contentRect: NSRect(x: 0, y: 0, width: 420, height: 460),
-            styleMask: [.borderless, .nonactivatingPanel],
+            contentRect: NSRect(x: 0, y: 0, width: 1200, height: PanelLayout.height),
+            styleMask: [.borderless],
             backing: .buffered,
             defer: false
         )
@@ -62,7 +69,7 @@ final class PanelController: NSObject, NSWindowDelegate {
         panel.backgroundColor = .clear
         panel.hasShadow = true
         panel.isReleasedWhenClosed = false
-        panel.isMovableByWindowBackground = true
+        panel.isMovableByWindowBackground = false
         panel.hidesOnDeactivate = false
         panel.collectionBehavior = [.canJoinAllSpaces, .fullScreenAuxiliary]
         panel.delegate = self
@@ -70,6 +77,7 @@ final class PanelController: NSObject, NSWindowDelegate {
         return panel
     }
 
+    /// Full width of the active screen, flush with the bottom of the visible area.
     private func position(_ panel: NSPanel) {
         let mouse = NSEvent.mouseLocation
         let screen = NSScreen.screens.first { NSMouseInRect(mouse, $0.frame, false) } ?? NSScreen.main
@@ -77,11 +85,13 @@ final class PanelController: NSObject, NSWindowDelegate {
             panel.center()
             return
         }
-        let origin = NSPoint(
-            x: visible.midX - panel.frame.width / 2,
-            y: visible.midY - panel.frame.height / 2 + 70
+        let frame = NSRect(
+            x: visible.minX,
+            y: visible.minY,
+            width: visible.width,
+            height: PanelLayout.height
         )
-        panel.setFrameOrigin(origin)
+        panel.setFrame(frame, display: false)
     }
 
     // MARK: - Keyboard
@@ -92,14 +102,23 @@ final class PanelController: NSObject, NSWindowDelegate {
             guard let self, self.isVisible else { return event }
 
             switch event.keyCode {
-            case 126: // up arrow
+            case 123, 126: // left arrow, up arrow
                 self.model.moveSelection(by: -1)
                 return nil
-            case 125: // down arrow
+            case 124, 125: // right arrow, down arrow
                 self.model.moveSelection(by: 1)
                 return nil
             case 36, 76: // return, keypad enter
                 self.model.activateSelection()
+                return nil
+            case 35 where event.modifierFlags.contains(.command): // ⌘P
+                self.model.togglePinSelection()
+                return nil
+            case 18 where event.modifierFlags.contains(.command): // ⌘1 history
+                self.model.tab = .history
+                return nil
+            case 19 where event.modifierFlags.contains(.command): // ⌘2 pinned
+                self.model.tab = .pinned
                 return nil
             case 53: // escape
                 self.onClose?()

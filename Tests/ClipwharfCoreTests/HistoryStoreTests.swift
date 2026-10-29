@@ -117,6 +117,70 @@ final class HistoryStoreTests: XCTestCase {
         XCTAssertEqual(text.text, "hello")
     }
 
+    // MARK: - Pinboards
+
+    func testPinningPersistsAndSurvivesReload() throws {
+        let store = makeStore()
+        let item = try XCTUnwrap(store.capture(CapturedClip(kind: .text, text: "keep me")))
+
+        store.setPinned(true, for: item.id)
+        XCTAssertTrue(store.items.first?.isPinned ?? false)
+        XCTAssertEqual(store.pinnedItems.map(\.text), ["keep me"])
+
+        let reloaded = makeStore()
+        XCTAssertEqual(reloaded.pinnedItems.map(\.text), ["keep me"])
+
+        reloaded.setPinned(false, for: item.id)
+        XCTAssertTrue(reloaded.pinnedItems.isEmpty)
+        XCTAssertFalse(reloaded.isPinned(item.id))
+    }
+
+    func testPinnedEntriesAreNotPruned() throws {
+        let store = makeStore(maxItems: 2)
+
+        let pinned = try XCTUnwrap(store.capture(CapturedClip(kind: .text, text: "pinned")))
+        store.setPinned(true, for: pinned.id)
+
+        for index in 0..<5 {
+            store.capture(CapturedClip(kind: .text, text: "clip \(index)"))
+        }
+
+        XCTAssertTrue(store.items.contains(where: { $0.id == pinned.id }))
+        XCTAssertEqual(store.pinnedItems.count, 1)
+        XCTAssertEqual(store.items.filter { !$0.isPinned }.count, 2)
+    }
+
+    func testRecaptureKeepsThePin() throws {
+        let store = makeStore()
+        let first = try XCTUnwrap(store.capture(CapturedClip(kind: .text, text: "same")))
+        store.setPinned(true, for: first.id)
+
+        store.capture(CapturedClip(kind: .text, text: "other"))
+        let again = try XCTUnwrap(store.capture(CapturedClip(kind: .text, text: "same")))
+
+        XCTAssertEqual(again.id, first.id)
+        XCTAssertTrue(again.isPinned)
+        XCTAssertEqual(store.items.first?.id, first.id)
+    }
+
+    func testSourceAppIsPersistedAndSearchable() throws {
+        let store = makeStore()
+        store.capture(
+            CapturedClip(
+                kind: .text,
+                text: "hello",
+                sourceBundleID: "com.google.Chrome",
+                sourceAppName: "Google Chrome"
+            )
+        )
+
+        let reloaded = makeStore()
+        let item = try XCTUnwrap(reloaded.items.first)
+        XCTAssertEqual(item.sourceAppName, "Google Chrome")
+        XCTAssertTrue(item.matches(search: "chrome"))
+        XCTAssertFalse(item.matches(search: "safari"))
+    }
+
     // MARK: - Blob safety and display
 
     func testBlobLookupRejectsPathTraversal() {

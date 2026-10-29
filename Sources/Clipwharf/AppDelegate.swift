@@ -10,6 +10,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private var statusController: StatusItemController?
     private var previousApp: NSRunningApplication?
     private var didShowHotKeyWarning = false
+    private var didShowAccessibilityNotice = false
 
     override init() {
         let store = HistoryStore()
@@ -38,6 +39,15 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusController.onOpen = { [weak self] in self?.togglePanel() }
         statusController.onAbout = { [weak self] in self?.showAbout() }
         statusController.onQuit = { NSApp.terminate(nil) }
+        statusController.onLaunchAtLoginError = { [weak self] error in
+            self?.presentError("Could not update the login item", error)
+        }
+        statusController.onLaunchAtLoginNeedsApproval = { [weak self] in
+            self?.showLoginItemApprovalNotice()
+        }
+        statusController.onFixAccessibility = { [weak self] in
+            self?.repairAccessibilityPermission()
+        }
         self.statusController = statusController
 
         hotKeyManager.onHotKey = { [weak self] in self?.togglePanel() }
@@ -120,23 +130,34 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
     /// Returns true when the target app should be re-activated afterwards.
     private func showAccessibilityNotice() -> Bool {
+        guard !didShowAccessibilityNotice else { return true }
+        didShowAccessibilityNotice = true
+
         let alert = NSAlert()
         alert.alertStyle = .informational
         alert.messageText = "Clipwharf needs Accessibility access to auto-paste"
         alert.informativeText = """
         The clip is on your clipboard — press ⌘V to paste it now.
 
-        To let Clipwharf press ⌘V for you next time, grant Accessibility access \
-        under System Settings → Privacy & Security → Accessibility.
+        If System Settings already shows Clipwharf switched on, that grant belongs \
+        to an older build: rebuilding the app gives it a new code identity. \
+        Use “Fix Permission…” to clear the stale entry and grant access again.
         """
-        alert.addButton(withTitle: "Grant Access…")
+        alert.addButton(withTitle: "Fix Permission…")
         alert.addButton(withTitle: "Not Now")
 
         if alert.runModal() == .alertFirstButtonReturn {
-            AccessibilityPermission.requestTrustPrompt()
+            repairAccessibilityPermission()
             return false
         }
         return true
+    }
+
+    /// Clears the stale Accessibility record and asks for a fresh grant.
+    func repairAccessibilityPermission() {
+        _ = AccessibilityPermission.resetGrant()
+        _ = AccessibilityPermission.requestTrustPrompt()
+        AccessibilityPermission.openSettings()
     }
 
     private func showHotKeyWarningOnce() {
@@ -155,8 +176,24 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         }
     }
 
-    private func presentError(_ message: String, _ error: Error) {
+    private func showLoginItemApprovalNotice() {
         let alert = NSAlert()
+        alert.alertStyle = .informational
+        alert.messageText = "Approve Clipwharf in Login Items"
+        alert.informativeText = """
+        macOS added Clipwharf to your login items but needs you to allow it.
+
+        Turn on Clipwharf under System Settings → General → Login Items.
+        """
+        alert.addButton(withTitle: "Open Settings…")
+        alert.addButton(withTitle: "Later")
+
+        if alert.runModal() == .alertFirstButtonReturn {
+            LaunchAtLogin.openLoginItemsSettings()
+        }
+    }
+
+    private func presentError(_ message: String, _ error: Error) {        let alert = NSAlert()
         alert.alertStyle = .warning
         alert.messageText = message
         alert.informativeText = error.localizedDescription

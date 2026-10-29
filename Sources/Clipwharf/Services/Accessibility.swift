@@ -16,6 +16,35 @@ enum AccessibilityPermission {
         ] as CFDictionary
         return AXIsProcessTrustedWithOptions(options)
     }
+
+    /// Opens System Settings → Privacy & Security → Accessibility.
+    static func openSettings() {
+        let url = URL(string: "x-apple.systempreferences:com.apple.preference.security?Privacy_Accessibility")!
+        NSWorkspace.shared.open(url)
+    }
+
+    /// Clears the stale TCC record for this bundle identifier.
+    ///
+    /// Ad-hoc signed builds get a new code identity every time the binary is
+    /// rebuilt, so the entry System Settings keeps is for the *previous*
+    /// binary: it can look enabled while macOS still refuses the running copy.
+    /// Resetting the record and granting again fixes that. Returns true when
+    /// `tccutil` ran successfully.
+    @discardableResult
+    static func resetGrant(bundleID: String = Bundle.main.bundleIdentifier ?? "dev.clipwharf.Clipwharf") -> Bool {
+        let process = Process()
+        process.executableURL = URL(fileURLWithPath: "/usr/bin/tccutil")
+        process.arguments = ["reset", "Accessibility", bundleID]
+        process.standardOutput = FileHandle.nullDevice
+        process.standardError = FileHandle.nullDevice
+        do {
+            try process.run()
+            process.waitUntilExit()
+            return process.terminationStatus == 0
+        } catch {
+            return false
+        }
+    }
 }
 
 /// Sends the system paste shortcut to whichever app is frontmost.

@@ -6,6 +6,12 @@ final class StatusItemController: NSObject {
     var onOpen: (() -> Void)?
     var onAbout: (() -> Void)?
     var onQuit: (() -> Void)?
+    /// Called when toggling the login item fails, so the app can explain why.
+    var onLaunchAtLoginError: ((Error) -> Void)?
+    /// Called when the system still needs the user to approve the login item.
+    var onLaunchAtLoginNeedsApproval: (() -> Void)?
+    /// Clears the stale Accessibility grant and prompts again.
+    var onFixAccessibility: (() -> Void)?
 
     private let statusItem: NSStatusItem
 
@@ -47,6 +53,25 @@ final class StatusItemController: NSObject {
 
         menu.addItem(.separator())
 
+        let launchAtLogin = NSMenuItem(
+            title: "Launch at Login",
+            action: #selector(toggleLaunchAtLogin),
+            keyEquivalent: ""
+        )
+        launchAtLogin.state = LaunchAtLogin.isEnabled ? .on : .off
+        launchAtLogin.target = self
+        menu.addItem(launchAtLogin)
+
+        let fixAccess = NSMenuItem(
+            title: "Fix Accessibility Permission…",
+            action: #selector(fixAccessibility),
+            keyEquivalent: ""
+        )
+        fixAccess.target = self
+        menu.addItem(fixAccess)
+
+        menu.addItem(.separator())
+
         let about = NSMenuItem(title: "About Clipwharf", action: #selector(aboutAction), keyEquivalent: "")
         about.target = self
         menu.addItem(about)
@@ -66,4 +91,16 @@ final class StatusItemController: NSObject {
     @objc private func openAction() { onOpen?() }
     @objc private func aboutAction() { onAbout?() }
     @objc private func quitAction() { onQuit?() }
+    @objc private func fixAccessibility() { onFixAccessibility?() }
+
+    @objc private func toggleLaunchAtLogin() {
+        do {
+            try LaunchAtLogin.setEnabled(!LaunchAtLogin.isEnabled)
+            if LaunchAtLogin.needsApproval {
+                onLaunchAtLoginNeedsApproval?()
+            }
+        } catch {
+            onLaunchAtLoginError?(error)
+        }
+    }
 }

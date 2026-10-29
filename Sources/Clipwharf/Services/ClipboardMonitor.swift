@@ -1,13 +1,26 @@
 import AppKit
 import ClipwharfCore
 
-/// Polls `NSPasteboard` for new text, images, and file references.
+/// Polls `NSPasteboard` for new text, images, links, colors, and files.
 ///
 /// macOS has no clipboard-change notification, so a 0.5 s poll is the standard
 /// low-cost approach. The monitor remembers the last change count so its own
 /// pasteboard writes (from Clipwharf) are not captured again.
 final class ClipboardMonitor {
     var onCapture: ((CapturedClip) -> Void)?
+
+    /// Apps that only ever put secrets on the pasteboard. Copied content from
+    /// these is skipped, the same way Paste ignores password managers.
+    static let excludedBundleIdentifiers: Set<String> = [
+        "com.1password.1password",
+        "com.agilebits.onepassword7",
+        "com.bitwarden.desktop",
+        "com.lastpass.LastPass",
+        "com.dashlane.dashlanephonefinal",
+        "com.apple.keychainaccess",
+        "com.apple.Passwords",
+        "com.keepersecurity.passwordmanager.mac"
+    ]
 
     private let pasteboard: NSPasteboard
     private var timer: Timer?
@@ -43,12 +56,31 @@ final class ClipboardMonitor {
         guard changeCount != lastChangeCount else { return }
         lastChangeCount = changeCount
 
-        if let clip = readClip() {
+        let source = currentSource()
+        if let bundleID = source.bundleID,
+           Self.excludedBundleIdentifiers.contains(bundleID) {
+            return
+        }
+
+        if let clip = readClip(source: source) {
             onCapture?(clip)
         }
     }
 
-    private func readClip() -> CapturedClip? {
+    /// The app that was frontmost when the pasteboard changed.
+    ///
+    /// The panel itself can be frontmost when the user re-copies something from
+    /// Clipwharf, so Clipwharf is reported as "no source" rather than being
+    /// attributed to the entry.
+    private func currentSource() -> (bundleID: String?, name: String?) {
+        guard let app = NSWorkspace.shared.frontmostApplication,
+              app.processIdentifier != ProcessInfo.processInfo.processIdentifier else {
+            return (nil, nil)
+        }
+        return (app.bundleIdentifier, app.localizedName)
+    }
+
+    private func readClip(source: (bundleID: String?, name: String?)) -> CapturedClip? {
         // Files first: Finder puts both file URLs and a text representation on
         // the pasteboard, and the file reference is the more useful entry.
         if let objects = pasteboard.readObjects(
@@ -60,7 +92,12 @@ final class ClipboardMonitor {
                 return nsURL as URL
             }.filter(\.isFileURL)
             if !urls.isEmpty {
-                return CapturedClip(kind: .files, fileURLs: urls)
+                return CapturedClip(
+                    kind: .files,
+                    fileURLs: urls,
+                    sourceBundleID: source.bundleID,
+                    sourceAppName: source.name
+                )
             }
         }
 
@@ -72,7 +109,9 @@ final class ClipboardMonitor {
                 kind: .image,
                 imageData: png,
                 imageWidth: rep?.pixelsWide,
-                imageHeight: rep?.pixelsHigh
+                imageHeight: rep?.pixelsHigh,
+                sourceBundleID: source.bundleID,
+                sourceAppName: source.name
             )
         }
 
@@ -83,14 +122,21 @@ final class ClipboardMonitor {
                 kind: .image,
                 imageData: png,
                 imageWidth: rep.pixelsWide,
-                imageHeight: rep.pixelsHigh
+                imageHeight: rep.pixelsHigh,
+                sourceBundleID: source.bundleID,
+                sourceAppName: source.name
             )
         }
 
         if let string = pasteboard.string(forType: .string) {
             let trimmed = string.trimmingCharacters(in: .whitespacesAndNewlines)
             if !trimmed.isEmpty {
-                return CapturedClip(kind: .text, text: string)
+                // Classifies colors and links, otherwise stays plain text.
+                return CapturedClip(
+                    text: string,
+                    sourceBundleID: source.bundleID,
+                    sourceAppName: source.name
+                )
             }
         }
 

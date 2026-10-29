@@ -33,7 +33,9 @@ targets.append(
             .linkedFramework("SwiftUI"),
             .linkedFramework("Carbon"),
             .linkedFramework("ApplicationServices"),
-            .linkedFramework("CoreGraphics")
+            .linkedFramework("CoreGraphics"),
+            .linkedFramework("ServiceManagement"),
+            .linkedFramework("QuickLookThumbnailing")
         ]
     )
 )
