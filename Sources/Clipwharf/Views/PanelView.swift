@@ -334,6 +334,7 @@ private struct ClipCard: View {
         }
         .padding(.horizontal, 9)
         .padding(.vertical, 6)
+        .frame(maxWidth: .infinity)
         .background(kindTint.opacity(isSelected ? 0.30 : 0.16))
     }
 
@@ -355,9 +356,16 @@ private struct ClipCard: View {
 
         case .image:
             if let thumbnail {
-                Image(nsImage: thumbnail)
-                    .resizable()
-                    .aspectRatio(contentMode: .fill)
+                // Color.clear takes the proposed size; the image is drawn in an
+                // overlay so its intrinsic size cannot stretch the card layout
+                // (which used to push the header band out of the clipped area).
+                Color.clear
+                    .overlay {
+                        Image(nsImage: thumbnail)
+                            .resizable()
+                            .scaledToFill()
+                    }
+                    .clipped()
             } else {
                 centeredIcon("photo")
             }
