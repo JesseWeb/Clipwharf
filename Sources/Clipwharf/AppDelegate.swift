@@ -207,7 +207,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         alert.informativeText = """
         \(ClipwharfBuildInfo.tagline)
 
-        Version \(ClipwharfBuildInfo.version) · \(ClipwharfBuildInfo.license) license
+        Version \(ClipwharfBuildInfo.version) · \(ClipwharfBuildInfo.license)
         Free and local. No accounts, no cloud, no tracking.
         """
         alert.addButton(withTitle: "Done")

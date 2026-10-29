@@ -104,4 +104,9 @@ swift build -c release --product Clipwharf
 
 ## Licencia
 
-MIT. Ver [LICENSE](LICENSE).
+Clipwharf es **código disponible (source-available), no software libre**. Puedes leer el código y
+compilarlo para un uso **personal y no comercial**. Está **prohibido** usarlo con fines comerciales,
+redistribuirlo, sublicenciarlo o vender copias.
+
+Los términos vinculantes están en [LICENSE](LICENSE). Cualquier licencia comercial, redistribución o
+uso más allá del personal requiere permiso previo por escrito del titular de los derechos.

@@ -108,4 +108,8 @@ swift build -c release --product Clipwharf
 
 ## 授權
 
-MIT，見 [LICENSE](LICENSE)。
+Clipwharf 是**原始碼可見（source-available），不是開放原始碼軟體**。你可以閱讀原始碼，並為自己的
+**個人、非商業用途**建置與執行它。你**不得**將其用於商業目的、再散布、再授權或販售副本。
+
+具法律效力的條款見 [LICENSE](LICENSE)。商業授權、再散布以及超出個人使用的任何用途，均需
+事先取得著作權人的書面許可。

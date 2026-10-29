@@ -13,7 +13,8 @@ Clipwharf does exactly two things:
    pastes it into the previous app.
 
 Everything else from the earlier Paste-like plan was removed. The project name
-remains Clipwharf and the license remains MIT.
+remains Clipwharf. The license is the source-available terms in
+`LICENSE`: personal, non-commercial use only, no redistribution.
 
 ## Done
 
@@ -94,7 +95,8 @@ remains Clipwharf and the license remains MIT.
   `Support/AppIcon.png` (drawn by `scripts/make-icon.swift`).
 - `README.md` covers build/run, usage, Accessibility, data location, scope, and
   license.
-- MIT `LICENSE` retained.
+- `LICENSE` replaced with source-available terms (no commercial use, no
+  redistribution, no sublicensing, no resale).
 
 ## Verification
 

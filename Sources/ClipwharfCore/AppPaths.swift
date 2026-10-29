@@ -14,6 +14,6 @@ public enum AppPaths {
 
 public enum ClipwharfBuildInfo {
     public static let version = "1.0.0"
-    public static let license = "MIT"
+    public static let license = "Source-available, personal use only"
     public static let tagline = "A tiny, local clipboard history for macOS."
 }

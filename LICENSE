@@ -1,21 +1,128 @@
-MIT License
+Clipwharf Source-Available License
+Version 1.0 — 29 October 2026
 
-Copyright (c) 2026 Clipwharf contributors
+Copyright (c) 2026 JesseWeb and Clipwharf contributors.
+All rights reserved.
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+This is a source-available license, not an open source license. No rights are
+granted except those stated below, and all other rights are reserved by the
+copyright holder.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+--------------------------------------------------------------------------------
+1. GRANT OF RIGHTS
+--------------------------------------------------------------------------------
+
+Subject to this license, you are granted a limited, non-exclusive,
+non-transferable, revocable license to:
+
+  (a) read and study the source code of this software;
+
+  (b) build and run the software for your own personal, non-commercial use on
+      devices that you own or control;
+
+  (c) modify the source code for that same personal, non-commercial use.
+
+No other rights are granted, whether by implication, estoppel, or otherwise.
+
+--------------------------------------------------------------------------------
+2. PROHIBITED USES
+--------------------------------------------------------------------------------
+
+You may not, and may not permit or enable anyone else to:
+
+  (a) use the software, in whole or in part, for any commercial purpose,
+      including but not limited to internal business use, use in the course of
+      employment, paid or unpaid consulting, client work, training or
+      instruction, or any activity intended for commercial advantage or
+      monetary compensation;
+
+  (b) distribute, publish, disclose, sublicense, rent, lease, lend, sell,
+      resell, or otherwise make the software, any copy of it, any binary build
+      of it, or any modification or derivative work based on it available to
+      any third party;
+
+  (c) include the software or any part of it in another product, installer,
+      package manager formula, container image, virtual appliance, application
+      store listing, or hosted or network service;
+
+  (d) provide the software to others as part of a service, support contract,
+      or distribution of hardware;
+
+  (e) remove, obscure, or alter any copyright notice, license notice, or
+      attribution contained in the software;
+
+  (f) use the name "Clipwharf", its application icon, or the names of its
+      contributors to endorse, promote, or imply affiliation with any product
+      or service without prior written permission.
+
+Modifications permitted under Section 1(c) remain subject to every restriction
+in this Section and may not be distributed.
+
+--------------------------------------------------------------------------------
+3. CONTRIBUTIONS
+--------------------------------------------------------------------------------
+
+Unless a separate written agreement states otherwise, any contribution you
+submit to this project is provided under the terms of this license, and you
+grant the copyright holder a perpetual, worldwide, royalty-free, irrevocable
+license to use, reproduce, modify, and relicense that contribution.
+
+--------------------------------------------------------------------------------
+4. NO WARRANTY
+--------------------------------------------------------------------------------
 
 THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. THE COPYRIGHT
+HOLDER DOES NOT WARRANT THAT THE SOFTWARE WILL BE ERROR-FREE OR THAT DEFECTS
+WILL BE CORRECTED.
+
+--------------------------------------------------------------------------------
+5. LIMITATION OF LIABILITY
+--------------------------------------------------------------------------------
+
+TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, THE COPYRIGHT HOLDER SHALL
+NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR
+CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED TO, LOSS OF DATA, LOSS OF
+PROFITS, BUSINESS INTERRUPTION, OR DAMAGE TO HARDWARE) ARISING IN ANY WAY OUT
+OF THE USE OF OR INABILITY TO USE THE SOFTWARE, EVEN IF ADVISED OF THE
+POSSIBILITY OF SUCH DAMAGE.
+
+--------------------------------------------------------------------------------
+6. TERMINATION
+--------------------------------------------------------------------------------
+
+This license terminates automatically and immediately if you breach any of its
+terms. On termination you must stop using the software and delete all copies,
+builds, and modifications in your possession or control. Sections 2, 4, 5, 7,
+and 8 survive termination.
+
+The copyright holder may also grant, refuse, or revoke permission at any time,
+and may offer separate commercial or redistribution licenses in writing.
+
+--------------------------------------------------------------------------------
+7. NO TRADEMARK OR PATENT RIGHTS
+--------------------------------------------------------------------------------
+
+No trademark, service mark, trade dress, or patent rights are granted under
+this license. The license covers copyright only.
+
+--------------------------------------------------------------------------------
+8. GENERAL
+--------------------------------------------------------------------------------
+
+  (a) If any provision of this license is held unenforceable, the remaining
+      provisions remain in full force and effect.
+
+  (b) This license is the entire agreement between you and the copyright
+      holder concerning the software, and supersedes any prior understanding.
+
+  (c) No waiver of any term is effective unless in writing.
+
+  (d) You are responsible for complying with the laws that apply to you.
+
+--------------------------------------------------------------------------------
+
+Commercial licensing, redistribution rights, and any other use outside this
+license are available only by prior written permission from the copyright
+holder. Open an issue on the project repository to start that conversation.

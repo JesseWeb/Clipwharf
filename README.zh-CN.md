@@ -110,4 +110,8 @@ swift scripts/make-icon.swift               # 重新生成 Support/AppIcon.png
 
 ## 许可
 
-MIT，见 [LICENSE](LICENSE)。
+Clipwharf 是**源码可见（source-available），不是开源软件**。你可以阅读源码，并为自己的
+**个人、非商业用途**构建和运行它。你**不得**将其用于商业目的、再分发、再许可或贩售副本。
+
+具有法律效力的条款见 [LICENSE](LICENSE)。商业授权、再分发以及超出个人使用的任何用途，均需
+事先获得版权持有人的书面许可。
