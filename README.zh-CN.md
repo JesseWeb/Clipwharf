@@ -115,3 +115,5 @@ Clipwharf 采用**非商业源码许可（source-available, noncommercial）**�
 
 具有法律效力的条款见 [LICENSE](LICENSE)。未经授权的商业使用构成违约，权利人可主张损害赔偿、
 返还所得利润、诉讼费用及律师费。
+
+商业授权与价格见 [COMMERCIAL.md](COMMERCIAL.md)；参与贡献见 [CONTRIBUTING.md](CONTRIBUTING.md)。

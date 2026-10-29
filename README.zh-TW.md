@@ -113,3 +113,5 @@ Clipwharf 採用**非商業原始碼授權（source-available, noncommercial）*
 
 具法律效力的條款見 [LICENSE](LICENSE)。未經授權的商業使用構成違約，權利人可主張損害賠償、
 返還所得利潤、訴訟費用及律師費。
+
+商業授權與價格見 [COMMERCIAL.md](COMMERCIAL.md)；參與貢獻見 [CONTRIBUTING.md](CONTRIBUTING.md)。

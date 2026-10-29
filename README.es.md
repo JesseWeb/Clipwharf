@@ -111,3 +111,5 @@ comercialmente, venderlo o cobrar por él. El uso comercial requiere una licenci
 Los términos vinculantes están en [LICENSE](LICENSE). El uso comercial no autorizado constituye
 un incumplimiento y puede perseguirse con indemnización de daños, restitución de beneficios,
 costas y honorarios.
+
+Licencias comerciales y precios: [COMMERCIAL.md](COMMERCIAL.md). Contribuir: [CONTRIBUTING.md](CONTRIBUTING.md).

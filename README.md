@@ -151,3 +151,5 @@ written license.
 The binding terms are in [LICENSE](LICENSE). Unauthorised commercial use is a
 breach of this license and may be pursued for damages, disgorgement of profits,
 costs, and attorney's fees.
+
+Commercial licences and prices: [COMMERCIAL.md](COMMERCIAL.md). Contributing: [CONTRIBUTING.md](CONTRIBUTING.md).

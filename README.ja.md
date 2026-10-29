@@ -114,3 +114,5 @@ Clipwharf は**非商用のソース公開ライセンス**で提供されてい
 
 法的に有効な条件は [LICENSE](LICENSE) にあります。無断の商業利用はライセンス違反であり、
 損害賠償、利益の返還、訴訟費用および弁護士費用の請求対象となります。
+
+商業ライセンスと価格は [COMMERCIAL.md](COMMERCIAL.md)、貢献については [CONTRIBUTING.md](CONTRIBUTING.md) を参照。

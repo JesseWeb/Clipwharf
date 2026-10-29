@@ -187,6 +187,13 @@ user to confirm visually.
   import on purpose so its tests run on Linux CI.
 - **Preserve the local-only promise.** No networking, analytics, telemetry, or
   auto-update code. No account or cloud sync.
+- **Contributions need the CLA.** A pull request is only mergeable when its
+  description contains the agreement line from `CONTRIBUTING.md`. Never merge
+  outside code that has not accepted it, and never paste in code from a project
+  with an incompatible licence.
+- **Commercial use is not free.** Read `COMMERCIAL.md` before adding anything
+  that packages, resells, or monetises the app; the licence forbids it without a
+  purchased plan.
 - **Keep docs in sync.** User-facing changes belong in `README.md` and its
   translations (`README.zh-CN.md`, `README.zh-TW.md`, `README.ja.md`,
   `README.fr.md`, `README.es.md`), and in `STATUS.md`. English is the source of

@@ -112,3 +112,5 @@ commerciale, vente ou facturation est **interdite**. Un usage commercial nécess
 Les conditions opposables figurent dans [LICENSE](LICENSE). Un usage commercial non autorisé
 constitue une violation de la licence et peut donner lieu à des dommages-intérêts, à la
 restitution des profits, aux frais et honoraires.
+
+Licences commerciales et tarifs : [COMMERCIAL.md](COMMERCIAL.md). Contribuer : [CONTRIBUTING.md](CONTRIBUTING.md).

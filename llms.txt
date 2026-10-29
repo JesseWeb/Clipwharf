@@ -11,6 +11,8 @@
   Claude Code / Codex / Cursor
 - [STATUS.md](STATUS.md) — implementation status and scope decisions
 - [LICENSE](LICENSE) — noncommercial source-available: sharing allowed, commercial use prohibited
+- [COMMERCIAL.md](COMMERCIAL.md) — commercial licences, price list, OEM terms
+- [CONTRIBUTING.md](CONTRIBUTING.md) — scope, workflow, and the contributor licence agreement
 
 ## Build in three lines
 
