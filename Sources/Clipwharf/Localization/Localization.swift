@@ -47,11 +47,23 @@ final class Localization: ObservableObject {
     }
 
     /// Relative timestamps ("3 minutes ago") in the selected language.
+    ///
+    /// The formatter is cached per locale: building one per card is measurable
+    /// on a long scroll, formatting itself is not.
     func relativeTime(for date: Date, now: Date = Date()) -> String {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.locale = locale
-        formatter.unitsStyle = .full
+        let formatter = Self.formatter(for: language)
         return formatter.localizedString(for: date, relativeTo: now)
+    }
+
+    private static var formatterCache: [AppLanguage: RelativeDateTimeFormatter] = [:]
+
+    private static func formatter(for language: AppLanguage) -> RelativeDateTimeFormatter {
+        if let cached = formatterCache[language] { return cached }
+        let formatter = RelativeDateTimeFormatter()
+        formatter.locale = Locale(identifier: language.localeIdentifier)
+        formatter.unitsStyle = .full
+        formatterCache[language] = formatter
+        return formatter
     }
 
     // MARK: - Tables

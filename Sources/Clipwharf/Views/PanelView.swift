@@ -209,7 +209,8 @@ struct PanelView: View {
                             ClipCard(
                                 item: item,
                                 isSelected: model.selection == item.id,
-                                thumbnail: model.previewImage(for: item)
+                                thumbnail: model.previewImage(for: item),
+                                now: model.referenceDate
                             )
                             .id(item.id)
                             .onTapGesture { model.activate(item) }
@@ -279,6 +280,8 @@ private struct ClipCard: View {
     let item: ClipItem
     let isSelected: Bool
     let thumbnail: NSImage?
+    /// Injected so the timestamp is re-evaluated whenever the panel opens.
+    let now: Date
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -320,12 +323,12 @@ private struct ClipCard: View {
 
             if item.sourceAppName != nil {
                 SourceAppIcon(bundleID: item.sourceBundleID, name: item.sourceAppName ?? "")
-                Text(L.relativeTime(for: item.createdAt))
+                Text(L.relativeTime(for: item.createdAt, now: now))
                     .font(.system(size: 9))
                     .lineLimit(1)
                     .foregroundStyle(.secondary)
             } else {
-                Text(L.relativeTime(for: item.createdAt))
+                Text(L.relativeTime(for: item.createdAt, now: now))
                     .font(.system(size: 9))
                     .lineLimit(1)
                     .foregroundStyle(.secondary)

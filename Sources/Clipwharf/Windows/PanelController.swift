@@ -18,6 +18,7 @@ final class PanelController: NSObject, NSWindowDelegate {
     private let model: PanelModel
     private var panel: HistoryPanel?
     private var keyMonitor: Any?
+    private var timeRefreshTimer: Timer?
 
     init(store: HistoryStore) {
         self.store = store
@@ -47,11 +48,31 @@ final class PanelController: NSObject, NSWindowDelegate {
         NSApp.activate(ignoringOtherApps: true)
         panel.makeKeyAndOrderFront(nil)
         installKeyMonitor()
+        startTimeRefresh()
     }
 
     func hide() {
         removeKeyMonitor()
+        stopTimeRefresh()
         panel?.orderOut(nil)
+    }
+
+    /// "3 minutes ago" should keep counting while the strip is left open.
+    /// One date update every 30 s is cheaper than a per-second timer and below
+    /// the resolution of the labels.
+    private func startTimeRefresh() {
+        stopTimeRefresh()
+        let timer = Timer(timeInterval: 30, repeats: true) { [weak self] _ in
+            self?.model.refreshReferenceDate()
+        }
+        timer.tolerance = 5
+        RunLoop.main.add(timer, forMode: .common)
+        timeRefreshTimer = timer
+    }
+
+    private func stopTimeRefresh() {
+        timeRefreshTimer?.invalidate()
+        timeRefreshTimer = nil
     }
 
     // MARK: - Panel construction

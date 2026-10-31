@@ -43,6 +43,10 @@ final class PanelModel: ObservableObject {
         }
     }
     @Published var selection: UUID?
+    /// The moment the panel was opened. Cards take it as an input so relative
+    /// timestamps are recomputed on every open instead of being frozen by
+    /// SwiftUI's diffing (nothing else in the card changes).
+    @Published private(set) var referenceDate = Date()
     /// Bumped whenever the panel opens so the search field can take focus.
     @Published private(set) var focusRequest = 0
 
@@ -96,6 +100,7 @@ final class PanelModel: ObservableObject {
 
     func reload(_ items: [ClipItem]) {
         self.items = items
+        referenceDate = Date()
         query = ""
         if tab == .pinned, !items.contains(where: \.isPinned) {
             tab = .history
@@ -113,6 +118,11 @@ final class PanelModel: ObservableObject {
         if let selection, !visibleItems.contains(where: { $0.id == selection }) {
             self.selection = visibleItems.first?.id
         }
+    }
+
+    /// Recompute relative timestamps while the panel stays open.
+    func refreshReferenceDate() {
+        referenceDate = Date()
     }
 
     func clearSearch() {
