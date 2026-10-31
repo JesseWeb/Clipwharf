@@ -10,10 +10,11 @@ enum PanelTab: String, CaseIterable, Identifiable {
 
     var id: String { rawValue }
 
-    var title: String {
+    /// Lookup key; the view localizes it.
+    var titleKey: String {
         switch self {
-        case .history: return "History"
-        case .pinned: return "Pinned"
+        case .history: return "panel.tab.history"
+        case .pinned: return "panel.tab.pinned"
         }
     }
 

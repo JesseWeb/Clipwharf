@@ -9,9 +9,9 @@ enum PasteboardWriter {
         var errorDescription: String? {
             switch self {
             case .missingContent:
-                return "This entry no longer has any content to paste."
+                return Localization.shared.t("error.missingContent")
             case .unreadableImage:
-                return "The saved image could not be read."
+                return Localization.shared.t("error.unreadableImage")
             }
         }
     }

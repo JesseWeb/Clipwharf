@@ -21,6 +21,8 @@ Clipwharf 是一个纯本地的 macOS 剪贴板历史工具。照常复制，按
 - **跳过密码管理器**：1Password、Bitwarden、LastPass、Dashlane、钥匙串访问、Passwords、Keeper 复制的内容不会入库。
 - **登录时启动**：菜单栏图标 → *Launch at Login*。
 - **纯本地**：`~/Library/Application Support/Clipwharf` 下的 JSON 索引 + PNG 图片目录。
+- **六种界面语言**：English、简体中文、繁體中文、日本語、Français、Español。默认跟随系统语言，
+  可在菜单栏图标 → 语言 中切换。
 
 ## 系统要求
 

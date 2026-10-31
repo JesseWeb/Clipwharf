@@ -32,6 +32,8 @@ telemetry: nothing ever leaves your Mac.
 - **Launch at login** — menu-bar icon → *Launch at Login*.
 - **Local only** — plain JSON index plus a folder of PNG blobs under
   `~/Library/Application Support/Clipwharf`.
+- **Six interface languages** — English, 简体中文, 繁體中文, 日本語, Français and
+  Español. Follows the system language; switch from the menu-bar icon → Language.
 
 ## Requirements
 

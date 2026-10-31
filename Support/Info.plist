@@ -8,6 +8,17 @@
     <string>Clipwharf</string>
     <key>CFBundleIdentifier</key>
     <string>dev.clipwharf.Clipwharf</string>
+    <key>CFBundleLocalizations</key>
+    <array>
+        <string>en</string>
+        <string>zh-Hans</string>
+        <string>zh-Hant</string>
+        <string>ja</string>
+        <string>fr</string>
+        <string>es</string>
+    </array>
+    <key>CFBundleDevelopmentRegion</key>
+    <string>en</string>
     <key>CFBundleExecutable</key>
     <string>Clipwharf</string>
     <key>CFBundleIconFile</key>
@@ -15,9 +26,9 @@
     <key>CFBundlePackageType</key>
     <string>APPL</string>
     <key>CFBundleShortVersionString</key>
-    <string>1.0.1</string>
+    <string>1.1.0</string>
     <key>CFBundleVersion</key>
-    <string>2</string>
+    <string>3</string>
     <key>LSMinimumSystemVersion</key>
     <string>13.0</string>
     <key>LSUIElement</key>

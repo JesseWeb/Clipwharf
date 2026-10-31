@@ -13,7 +13,7 @@ public enum AppPaths {
 }
 
 public enum ClipwharfBuildInfo {
-    public static let version = "1.0.1"
+    public static let version = "1.1.0"
     public static let license = "AGPL-3.0"
     public static let tagline = "A tiny, local clipboard history for macOS."
     public static let sourceURL = "https://github.com/JesseWeb/Clipwharf"

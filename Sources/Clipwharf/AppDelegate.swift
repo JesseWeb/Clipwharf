@@ -1,6 +1,9 @@
 import AppKit
 import ClipwharfCore
 
+/// Shorthand for the shared localization table.
+private let L10n = Localization.shared
+
 final class AppDelegate: NSObject, NSApplicationDelegate {
     private let store: HistoryStore
     private let panelController: PanelController
@@ -40,7 +43,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         statusController.onAbout = { [weak self] in self?.showAbout() }
         statusController.onQuit = { NSApp.terminate(nil) }
         statusController.onLaunchAtLoginError = { [weak self] error in
-            self?.presentError("Could not update the login item", error)
+            self?.presentError(L10n.t("alert.error.loginItem"), error)
         }
         statusController.onLaunchAtLoginNeedsApproval = { [weak self] in
             self?.showLoginItemApprovalNotice()
@@ -102,7 +105,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
             try PasteboardWriter.write(item, from: store)
             monitor.noteOwnWrite()
         } catch {
-            presentError("Could not restore this clip", error)
+            presentError(L10n.t("alert.error.restore"), error)
             return
         }
 
@@ -135,16 +138,10 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
 
         let alert = NSAlert()
         alert.alertStyle = .informational
-        alert.messageText = "Clipwharf needs Accessibility access to auto-paste"
-        alert.informativeText = """
-        The clip is on your clipboard — press ⌘V to paste it now.
-
-        If System Settings already shows Clipwharf switched on, that grant belongs \
-        to an older build: rebuilding the app gives it a new code identity. \
-        Use “Fix Permission…” to clear the stale entry and grant access again.
-        """
-        alert.addButton(withTitle: "Fix Permission…")
-        alert.addButton(withTitle: "Not Now")
+        alert.messageText = L10n.t("alert.access.title")
+        alert.informativeText = L10n.t("alert.access.body")
+        alert.addButton(withTitle: L10n.t("alert.fix"))
+        alert.addButton(withTitle: L10n.t("alert.notNow"))
 
         if alert.runModal() == .alertFirstButtonReturn {
             repairAccessibilityPermission()
@@ -166,12 +163,9 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.4) {
             let alert = NSAlert()
             alert.alertStyle = .warning
-            alert.messageText = "⌘⇧V is already in use"
-            alert.informativeText = """
-            Another app has claimed the global shortcut, so Clipwharf could not \
-            register it. You can still open history from the paperclip menu-bar icon.
-            """
-            alert.addButton(withTitle: "OK")
+            alert.messageText = L10n.t("alert.hotkey.title")
+            alert.informativeText = L10n.t("alert.hotkey.body")
+            alert.addButton(withTitle: L10n.t("alert.ok"))
             alert.runModal()
         }
     }
@@ -179,40 +173,36 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     private func showLoginItemApprovalNotice() {
         let alert = NSAlert()
         alert.alertStyle = .informational
-        alert.messageText = "Approve Clipwharf in Login Items"
-        alert.informativeText = """
-        macOS added Clipwharf to your login items but needs you to allow it.
-
-        Turn on Clipwharf under System Settings → General → Login Items.
-        """
-        alert.addButton(withTitle: "Open Settings…")
-        alert.addButton(withTitle: "Later")
+        alert.messageText = L10n.t("alert.login.title")
+        alert.informativeText = L10n.t("alert.login.body")
+        alert.addButton(withTitle: L10n.t("alert.openSettings"))
+        alert.addButton(withTitle: L10n.t("alert.later"))
 
         if alert.runModal() == .alertFirstButtonReturn {
             LaunchAtLogin.openLoginItemsSettings()
         }
     }
 
-    private func presentError(_ message: String, _ error: Error) {        let alert = NSAlert()
+    private func presentError(_ message: String, _ error: Error) {
+        let alert = NSAlert()
         alert.alertStyle = .warning
         alert.messageText = message
         alert.informativeText = error.localizedDescription
-        alert.addButton(withTitle: "OK")
+        alert.addButton(withTitle: L10n.t("alert.ok"))
         alert.runModal()
     }
 
     private func showAbout() {
         let alert = NSAlert()
         alert.messageText = "Clipwharf"
-        alert.informativeText = """
-        \(ClipwharfBuildInfo.tagline)
-
-        Version \(ClipwharfBuildInfo.version) · \(ClipwharfBuildInfo.license)
-        Free and local. No accounts, no cloud, no tracking.
-
-        Source: \(ClipwharfBuildInfo.sourceURL)
-        """
-        alert.addButton(withTitle: "Done")
+        alert.informativeText = L10n.t(
+            "about.body",
+            L10n.t("about.tagline"),
+            ClipwharfBuildInfo.version,
+            ClipwharfBuildInfo.license,
+            ClipwharfBuildInfo.sourceURL
+        )
+        alert.addButton(withTitle: L10n.t("about.done"))
         alert.runModal()
     }
 }

@@ -21,6 +21,8 @@ Implémentation indépendante (clean-room), sans lien avec Paste ni aucun autre 
 - **Gestionnaires de mots de passe ignorés** : 1Password, Bitwarden, LastPass, Dashlane, Trousseau d'accès, Passwords et Keeper ne sont pas enregistrés.
 - **Lancement à l'ouverture de session** : icône de la barre des menus → *Launch at Login*.
 - **100 % local** : index JSON et fichiers PNG dans `~/Library/Application Support/Clipwharf`.
+- **Six langues** — English, 简体中文, 繁體中文, 日本語, Français, Español. Suit la langue du
+  système ; changeable via l'icône de la barre des menus → Langue.
 
 ## Prérequis
 

@@ -21,6 +21,8 @@ Paste などの商用クリップボードマネージャとは無関係のク�
 - **パスワードマネージャを除外**：1Password、Bitwarden、LastPass、Dashlane、キーチェーンアクセス、Passwords、Keeper からのコピーは保存しません。
 - **ログイン時に起動**：メニューバーのアイコン → *Launch at Login*。
 - **ローカルのみ**：`~/Library/Application Support/Clipwharf` に JSON と PNG。
+- **6 言語対応**：English、简体中文、繁體中文、日本語、Français、Español。既定ではシステム言語に従い、
+  メニューバーのアイコン → 言語 で切り替えられます。
 
 ## 動作環境
 

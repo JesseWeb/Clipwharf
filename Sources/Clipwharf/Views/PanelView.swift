@@ -2,6 +2,9 @@ import AppKit
 import SwiftUI
 import ClipwharfCore
 
+/// Shorthand for the shared localization table.
+private let L = Localization.shared
+
 /// Shared geometry for the bottom panel, used by both the window and the view.
 enum PanelLayout {
     /// Height of the strip that slides up from the bottom of the screen.
@@ -46,6 +49,8 @@ private struct TopRoundedRectangle: InsettableShape {
 
 struct PanelView: View {
     @ObservedObject var model: PanelModel
+    /// Observed so switching the language redraws the strip immediately.
+    @ObservedObject private var l10n = Localization.shared
     @FocusState private var searchFocused: Bool
 
     var body: some View {
@@ -103,7 +108,7 @@ struct PanelView: View {
                 HStack(spacing: 4) {
                     Image(systemName: tab.symbolName)
                         .font(.system(size: 9, weight: .semibold))
-                    Text(tab.title)
+                    Text(l10n.t(tab.titleKey))
                         .font(.system(size: 11, weight: .medium))
                     if tab == .pinned, model.pinnedCount > 0 {
                         Text("\(model.pinnedCount)")
@@ -137,9 +142,9 @@ struct PanelView: View {
     private var countLabel: String {
         let visible = model.visibleItems.count
         if model.isFiltering {
-            return "\(visible) of \(model.tabItems.count)"
+            return l10n.t("panel.count.filtered", visible, model.tabItems.count)
         }
-        return visible == 1 ? "1 entry" : "\(visible) entries"
+        return l10n.t(visible == 1 ? "panel.count.one" : "panel.count.other", visible)
     }
 
     private var searchField: some View {
@@ -147,7 +152,7 @@ struct PanelView: View {
             Image(systemName: "magnifyingglass")
                 .font(.system(size: 11))
                 .foregroundStyle(.secondary)
-            TextField("Search clips", text: $model.query)
+            TextField(l10n.t("panel.search"), text: $model.query)
                 .textFieldStyle(.plain)
                 .font(.system(size: 12))
                 .focused($searchFocused)
@@ -160,7 +165,7 @@ struct PanelView: View {
                         .foregroundStyle(.tertiary)
                 }
                 .buttonStyle(.plain)
-                .help("Clear search")
+                .help(l10n.t("panel.clearSearch"))
             }
         }
         .padding(.horizontal, 10)
@@ -180,21 +185,21 @@ struct PanelView: View {
             case .history:
                 emptyState(
                     icon: "paperclip",
-                    title: "No clips yet",
-                    subtitle: "Copy text, an image, or files, then press ⌘⇧V."
+                    title: l10n.t("panel.empty.clips.title"),
+                    subtitle: l10n.t("panel.empty.clips.body")
                 )
             case .pinned:
                 emptyState(
                     icon: "pin",
-                    title: "No pins yet",
-                    subtitle: "Select a card and press ⌘P to keep it here."
+                    title: l10n.t("panel.empty.pins.title"),
+                    subtitle: l10n.t("panel.empty.pins.body")
                 )
             }
         } else if model.visibleItems.isEmpty {
             emptyState(
                 icon: "magnifyingglass",
-                title: "No matches",
-                subtitle: "No clips match this search."
+                title: l10n.t("panel.empty.matches.title"),
+                subtitle: l10n.t("panel.empty.matches.body")
             )
         } else {
             ScrollViewReader { proxy in
@@ -209,10 +214,10 @@ struct PanelView: View {
                             .id(item.id)
                             .onTapGesture { model.activate(item) }
                             .contextMenu {
-                                Button(item.isPinned ? "Unpin" : "Pin") {
+                                Button(l10n.t(item.isPinned ? "card.unpin" : "card.pin")) {
                                     model.togglePin(item)
                                 }
-                                Button("Copy") {
+                                Button(l10n.t("card.copy")) {
                                     model.activate(item)
                                 }
                             }
@@ -249,11 +254,11 @@ struct PanelView: View {
 
     private var footer: some View {
         HStack(spacing: 16) {
-            Text("←→ Select")
-            Text("⌘P Pin")
-            Text("⌘1/2 Tabs")
-            Text("⏎ Paste")
-            Text("esc Close")
+            Text(l10n.t("panel.footer.select"))
+            Text(l10n.t("panel.footer.pin"))
+            Text(l10n.t("panel.footer.tabs"))
+            Text(l10n.t("panel.footer.paste"))
+            Text(l10n.t("panel.footer.close"))
         }
         .font(.system(size: 10))
         .foregroundStyle(.secondary)
@@ -274,12 +279,6 @@ private struct ClipCard: View {
     let item: ClipItem
     let isSelected: Bool
     let thumbnail: NSImage?
-
-    private static let timeFormatter: RelativeDateTimeFormatter = {
-        let formatter = RelativeDateTimeFormatter()
-        formatter.unitsStyle = .full
-        return formatter
-    }()
 
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -309,7 +308,7 @@ private struct ClipCard: View {
         HStack(spacing: 5) {
             Image(systemName: iconName)
                 .font(.system(size: 9, weight: .semibold))
-            Text(item.kindLabel)
+            Text(kindLabel)
                 .font(.system(size: 10, weight: .semibold))
 
             if item.isPinned {
@@ -321,12 +320,12 @@ private struct ClipCard: View {
 
             if item.sourceAppName != nil {
                 SourceAppIcon(bundleID: item.sourceBundleID, name: item.sourceAppName ?? "")
-                Text(Self.timeFormatter.localizedString(for: item.createdAt, relativeTo: Date()))
+                Text(L.relativeTime(for: item.createdAt))
                     .font(.system(size: 9))
                     .lineLimit(1)
                     .foregroundStyle(.secondary)
             } else {
-                Text(Self.timeFormatter.localizedString(for: item.createdAt, relativeTo: Date()))
+                Text(L.relativeTime(for: item.createdAt))
                     .font(.system(size: 9))
                     .lineLimit(1)
                     .foregroundStyle(.secondary)
@@ -430,6 +429,16 @@ private struct ClipCard: View {
         .frame(maxWidth: .infinity)
     }
 
+    private var kindLabel: String {
+        switch item.kind {
+        case .text: return L.t("card.kind.text")
+        case .link: return L.t("card.kind.link")
+        case .image: return L.t("card.kind.image")
+        case .files: return L.t("card.kind.files")
+        case .color: return L.t("card.kind.color")
+        }
+    }
+
     private var iconName: String {
         switch item.kind {
         case .text: return "text.alignleft"
@@ -527,7 +536,7 @@ private struct ClipCard: View {
         switch item.kind {
         case .text:
             let count = (item.text ?? "").count
-            return count == 1 ? "1 character" : "\(count) characters"
+            return L.t(count == 1 ? "card.characters.one" : "card.characters.other", count)
         case .link:
             return item.linkHost ?? "Link"
         case .color:
@@ -536,17 +545,17 @@ private struct ClipCard: View {
                 let r = (value >> 16) & 0xFF
                 let g = (value >> 8) & 0xFF
                 let b = value & 0xFF
-                return "RGB \(r), \(g), \(b)"
+                return L.t("card.rgb", r, g, b)
             }
             return "Color"
         case .image:
             if let width = item.imageWidth, let height = item.imageHeight {
                 return "\(width) × \(height)"
             }
-            return "Image"
+            return L.t("card.image")
         case .files:
             let count = item.fileURLs?.count ?? 0
-            return count == 1 ? "1 file" : "\(count) files"
+            return L.t(count == 1 ? "card.files.one" : "card.files.other", count)
         }
     }
 }

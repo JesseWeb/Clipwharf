@@ -64,6 +64,16 @@ remains Clipwharf. The license is AGPL-3.0 with a commercial option:
 - Empty state and no-matches state are centered in the strip; the Pinned tab
   has its own empty state.
 
+### Localization
+
+- Six interface languages: English, 简体中文, 繁體中文, 日本語, Français, Español.
+- Defaults to the system language (`AppleLanguages`, not the bundle-filtered
+  `Locale.preferredLanguages`) and can be switched from the menu-bar menu →
+  Language without restarting.
+- Strings live in a code-side table (`Localization.swift`) instead of `.lproj`
+  resources, so the runtime picker and the build script stay simple.
+- Relative timestamps use the selected language's locale.
+
 ### Global shortcut and paste
 
 - Carbon `RegisterEventHotKey` for ⌘⇧V (`HotKeyManager`).
