@@ -4,7 +4,7 @@ macOS 向けの、小さくて完全ローカルなクリップボード履歴�
 
 [![macOS 13+](https://img.shields.io/badge/macOS-13%2B-blue)](https://www.apple.com/macos/) [![Swift 5.9](https://img.shields.io/badge/Swift-5.9-orange)](https://swift.org) [![Release](https://img.shields.io/github/v/release/JesseWeb/Clipwharf)](https://github.com/JesseWeb/Clipwharf/releases) [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](LICENSE)
 
-![Clipwharf: press ⌘⇧V, pick a card, it pastes](docs/demo.gif)
+![Clipwharf: press ⌘⇧V, pick a card, it pastes](docs/screenshot.png)
 
 [English](README.md) · [简体中文](README.zh-CN.md) · [繁體中文](README.zh-TW.md) · **[日本語](README.ja.md)** · [Français](README.fr.md) · [Español](README.es.md)
 
